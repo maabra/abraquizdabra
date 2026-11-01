@@ -2,6 +2,26 @@
 
 AbraQuizDabra is a programming quiz website with a Windows XP-inspired interface. It provides theory questions, code exercises, explanations, saved questions, and progress tracking.
 
+## Development and GitHub Pages
+
+Use Node.js 24 and Python 3.13. From the repository root:
+
+```sh
+python -m pip install -r requirements-verification.txt
+npm ci --prefix audit/runtime --no-audit --no-fund --ignore-scripts
+npm run build
+npm run audit:native
+npm test
+npm run package
+npm run test:browser
+```
+
+On Windows PowerShell, use `npm.cmd` if script execution policy blocks `npm.ps1`. Browser checks require Chrome, Chromium, or Edge; set `QUIZ_BROWSER` to its executable if it is not found automatically. Set `QUIZ_SITE_DIR=dist` to test the deployment package. `npm run dev` serves the source site at http://127.0.0.1:4173.
+
+GitHub Actions runs the build, reference audit, tests, and browser checks against `dist` under a repository URL prefix. `QUIZ_REQUIRE_RUNTIMES=1` requires the supported Python, JavaScript, shell, and browser checks to pass; optional native hosts remain disclosed separately. Framework audit dependencies are locked in `audit/runtime/package-lock.json` and never included in the deployed site. Verification reports and screenshots are retained as workflow artifacts for seven days, including on failure.
+
+Deployment runs only for `main`, after all checks pass. In repository **Settings → Pages**, select **GitHub Actions** as the build source. The published project URL is https://maabra.github.io/programming-questionnaire/. Pull requests run validation without publishing. Keep `scripts/` in version control: both CI and local verification depend on those files. Packaging rebuilds `dist` from the public asset allowlist to remove stale files.
+
 ## Question bank
 
 The bank contains **6,600 question records across 33 topics**. Each topic has 200 questions, divided into 50 Easy, 50 Medium, 50 Hard, and 50 Very hard records.
