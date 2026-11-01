@@ -1,0 +1,464 @@
+[
+  {
+    "id": "python",
+    "name": "Python",
+    "category": "Languages",
+    "icon": "Py",
+    "source": "https://docs.python.org/3/tutorial/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "javascript",
+    "name": "JavaScript",
+    "category": "Languages",
+    "icon": "JS",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "java",
+    "name": "Java",
+    "category": "Languages",
+    "icon": "Jv",
+    "source": "https://docs.oracle.com/javase/tutorial/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "c",
+    "name": "C",
+    "category": "Languages",
+    "icon": "C",
+    "source": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "cpp",
+    "name": "C++",
+    "category": "Languages",
+    "icon": "C+",
+    "source": "https://eel.is/c++draft/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "csharp",
+    "name": "C#",
+    "category": "Languages",
+    "icon": "C#",
+    "source": "https://learn.microsoft.com/en-us/dotnet/csharp/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "php",
+    "name": "PHP",
+    "category": "Languages",
+    "icon": "PHP",
+    "source": "https://www.php.net/manual/en/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "sql",
+    "name": "SQL",
+    "category": "Languages",
+    "icon": "SQL",
+    "source": "https://www.postgresql.org/docs/current/sql.html",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "haskell",
+    "name": "Haskell",
+    "category": "Languages",
+    "icon": "Hs",
+    "source": "https://www.haskell.org/documentation/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "html",
+    "name": "HTML",
+    "category": "Languages",
+    "icon": "<>",
+    "source": "https://html.spec.whatwg.org/multipage/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "css",
+    "name": "CSS",
+    "category": "Languages",
+    "icon": "{ }",
+    "source": "https://developer.mozilla.org/en-US/docs/Web/CSS",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "react",
+    "name": "React",
+    "category": "Frameworks & tools",
+    "icon": "Re",
+    "source": "https://react.dev/learn",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "vue",
+    "name": "Vue",
+    "category": "Frameworks & tools",
+    "icon": "Vu",
+    "source": "https://vuejs.org/guide/introduction.html",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "node",
+    "name": "Node.js",
+    "category": "Frameworks & tools",
+    "icon": "N",
+    "source": "https://nodejs.org/api/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "fastapi",
+    "name": "FastAPI",
+    "category": "Frameworks & tools",
+    "icon": "Fa",
+    "source": "https://fastapi.tiangolo.com/tutorial/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "dotnet",
+    "name": ".NET",
+    "category": "Frameworks & tools",
+    "icon": ".N",
+    "source": "https://learn.microsoft.com/en-us/dotnet/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "git",
+    "name": "Git",
+    "category": "Frameworks & tools",
+    "icon": "Gt",
+    "source": "https://git-scm.com/docs",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "docker",
+    "name": "Docker",
+    "category": "Frameworks & tools",
+    "icon": "Dk",
+    "source": "https://docs.docker.com/reference/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "compose",
+    "name": "Docker Compose",
+    "category": "Frameworks & tools",
+    "icon": "Dc",
+    "source": "https://docs.docker.com/reference/compose-file/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "rest",
+    "name": "REST API",
+    "category": "Frameworks & tools",
+    "icon": "API",
+    "source": "https://www.rfc-editor.org/rfc/rfc9110.html",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "opencv",
+    "name": "OpenCV",
+    "category": "Frameworks & tools",
+    "icon": "Cv",
+    "source": "https://docs.opencv.org/4.x/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "numpy",
+    "name": "NumPy",
+    "category": "Frameworks & tools",
+    "icon": "Np",
+    "source": "https://numpy.org/doc/stable/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "sqlalchemy",
+    "name": "SQLAlchemy",
+    "category": "Frameworks & tools",
+    "icon": "Sa",
+    "source": "https://docs.sqlalchemy.org/en/20/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "mysql",
+    "name": "MySQL",
+    "category": "Data & engineering",
+    "icon": "My",
+    "source": "https://dev.mysql.com/doc/refman/8.4/en/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "dynamodb",
+    "name": "DynamoDB",
+    "category": "Data & engineering",
+    "icon": "Dy",
+    "source": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "matlab",
+    "name": "MATLAB",
+    "category": "Data & engineering",
+    "icon": "Mt",
+    "source": "https://www.mathworks.com/help/matlab/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "simulink",
+    "name": "Simulink",
+    "category": "Data & engineering",
+    "icon": "Sl",
+    "source": "https://www.mathworks.com/help/simulink/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "wireshark",
+    "name": "Wireshark",
+    "category": "Data & engineering",
+    "icon": "Ws",
+    "source": "https://www.wireshark.org/docs/wsug_html_chunked/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "openssl",
+    "name": "OpenSSL",
+    "category": "Data & engineering",
+    "icon": "Os",
+    "source": "https://docs.openssl.org/3.0/man1/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "cad",
+    "name": "CAD",
+    "category": "Design & hardware",
+    "icon": "Cd",
+    "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "inventor",
+    "name": "Autodesk Inventor",
+    "category": "Design & hardware",
+    "icon": "Ai",
+    "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "cfd",
+    "name": "Autodesk CFD",
+    "category": "Design & hardware",
+    "icon": "Cf",
+    "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-validate-convergence-in-Simulation-CFD.html",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
+    "id": "arduino",
+    "name": "Arduino",
+    "category": "Design & hardware",
+    "icon": "Ar",
+    "source": "https://docs.arduino.cc/language-reference/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  }
+]

@@ -1,0 +1,44 @@
+<!doctype html><meta charset="utf-8"><title>Local question verification</title>
+<!-- Development-only dependencies. This file is not in the deployment package. -->
+<script src="../.qa/runtime/node_modules/react/umd/react.development.js"></script>
+<script src="../.qa/runtime/node_modules/react-dom/umd/react-dom.development.js"></script>
+<script src="../.qa/runtime/node_modules/vue/dist/vue.global.js"></script>
+<div id="host"></div>
+<script>
+window.runNativeCase = async function(input){
+  const host=document.querySelector('#host');host.innerHTML='';
+  const {topic,band,code,compiled}=input;
+  if(topic==='css'||topic==='html'){
+    const frame=document.createElement('iframe');frame.style.width='800px';host.append(frame);
+    const doc=frame.contentDocument;
+    doc.open();doc.write('<!doctype html><meta charset="utf-8">'+(topic==='css'?'<style>'+code+'</style><div id="target" class="box"></div>':code));doc.close();
+    if(topic==='css'){
+      const element=doc.querySelector('.box'),style=frame.contentWindow.getComputedStyle(element);
+      const borderWidth=element.getBoundingClientRect().width;
+      const paddingBorder=['paddingLeft','paddingRight','borderLeftWidth','borderRightWidth'].map(k=>parseFloat(style[k])).reduce((a,b)=>a+b,0);
+      return band===1?borderWidth-paddingBorder:borderWidth;
+    }
+    if(band===1)return [...doc.querySelector('tr').cells].reduce((count,cell)=>count+cell.colSpan,0);
+    const list=band===3?doc.querySelector('ol ol'):doc.querySelector('ol');
+    const children=[...list.children].filter(e=>e.tagName==='LI');
+    const increment=list.reversed?-1:1;
+    let ordinal=list.hasAttribute('start')?list.start:list.reversed?children.length:1;
+    const target=band===0?children[1]:children[2];
+    for(const child of children){if(child.hasAttribute('value'))ordinal=child.value;if(child===target)return ordinal;ordinal+=increment;}
+    throw Error('Missing list target');
+  }
+  const exports={};
+  const require=name=>{if(name==='react')return React;if(name==='vue')return Vue;throw Error('Unexpected import '+name);};
+  new Function('require','exports',compiled)(require,exports);
+  if(topic==='react'){
+    const root=ReactDOM.createRoot(host);
+    ReactDOM.flushSync(()=>root.render(React.createElement(exports.default)));
+    if(band>=2)ReactDOM.flushSync(()=>host.querySelector('button').dispatchEvent(new MouseEvent('click',{bubbles:true})));
+    const value=Number(host.querySelector('output').textContent);
+    ReactDOM.flushSync(()=>root.unmount());return value;
+  }
+  const app=Vue.createApp(exports.default);app.mount(host);
+  if(band>=2){host.querySelector('button').dispatchEvent(new MouseEvent('click',{bubbles:true}));await Vue.nextTick();}
+  const value=Number(host.querySelector('output').textContent);app.unmount();return value;
+};
+</script>

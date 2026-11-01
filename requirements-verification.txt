@@ -1,0 +1,6 @@
+# Optional locally; installed by CI to execute Python reference snippets.
+numpy>=2.0,<3
+opencv-python-headless>=4.10,<5
+SQLAlchemy>=2.0,<3
+fastapi>=0.115,<1
+httpx>=0.27,<1

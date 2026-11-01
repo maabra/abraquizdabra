@@ -1,0 +1,59 @@
+{
+  "generatedAt": "2026-10-30T10:56:43.720Z",
+  "total": 6600,
+  "passed": 6600,
+  "failed": 0,
+  "theoryReviewed": 1320,
+  "independentlyCalculated": 5280,
+  "nativeExecutionCovered": 2880,
+  "nativeExecutionNotCovered": 2400,
+  "scope": "AI-assisted source and reasoning review, followed by checks independent of the question generator. This is not an external human certification.",
+  "limits": "A passed independent calculation is distinct from execution in the actual language, framework, device or vendor application. Proprietary engineering applications, a DynamoDB account, an Arduino board and a Docker daemon are not available in this review environment. The question ledger states these limits rather than marking them as runtime passes.",
+  "corrections": [
+    {
+      "area": "JavaScript theory",
+      "issue": "The data parser split explanation text containing ||, leaving an incomplete nullish-coalescing explanation.",
+      "fix": "Parse the first two separators only and preserve all remaining explanation text."
+    },
+    {
+      "area": "C++ theory",
+      "issue": "The vector definition did not mention the noncontiguous vector<bool> specialization.",
+      "fix": "Use the general sequence-container definition and explain the specialization explicitly."
+    },
+    {
+      "area": "OpenSSL theory",
+      "issue": "The digest definition implied every hash has a fixed output length.",
+      "fix": "Distinguish fixed-output hashes from extendable-output functions such as SHAKE."
+    },
+    {
+      "area": "Haskell and SQL creation",
+      "issue": "A shared prompt required constant auxiliary space even though lazy iterate and a recursive SQL CTE do not guarantee it.",
+      "fix": "Remove the unsupported space-complexity requirement from the shared task."
+    },
+    {
+      "area": "Completion questions",
+      "issue": "The first matching token could be in a comment or input declaration. In ten Simulink records this formed delayed____ and the answer did not reconstruct the model.",
+      "fix": "Mask the final token occurrence, and independently check that filling the blank exactly reconstructs the solution for every record."
+    },
+    {
+      "area": "Answer-format instructions",
+      "issue": "The generic numeric-output assumption was also shown on creation, completion and logic tasks, contradicting their requested answer formats.",
+      "fix": "Use instructions specific to code submission, blank completion or B-minus-A comparison."
+    },
+    {
+      "area": "Wireshark creation",
+      "issue": "Creation tasks referred to a specified packet dataset but hid its definition with the model answer.",
+      "fix": "Show the complete synthetic dataset before the editor while keeping the requested display-filter answer hidden."
+    },
+    {
+      "area": "PHP reference code",
+      "issue": "The shared C-like template produced an invalid comma-separated assignment and rewrote a newline escape into a literal dollar-n suffix.",
+      "fix": "Use PHP-specific templates with separate assignments and PHP_EOL; parse and execute every stored variant using a checksum-verified official portable PHP CLI."
+    },
+    {
+      "area": "Ambiguous theory definitions",
+      "issue": "The tuple definition could also describe range; broad Java/C# reference-type definitions also described interfaces; generic HTML meaning/label descriptions overlapped concrete elements.",
+      "fix": "Specify explicitly stored heterogeneous tuple elements, constructor/instance-field capability for classes, a category term for semantic elements, and explicit for/containment association for labels."
+    }
+  ]
+}

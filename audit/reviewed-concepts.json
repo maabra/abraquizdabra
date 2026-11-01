@@ -1,0 +1,2381 @@
+{
+  "scope": "Frozen AI-assisted semantic review, not an independent human certification",
+  "glossary": {
+    "python": [
+      {
+        "term": "list",
+        "definition": "An ordered mutable sequence",
+        "explanation": "list: Lists allow replacing elements and preserve position.",
+        "reviewRationale": "List item references can be replaced.",
+        "source": "https://docs.python.org/3/tutorial/"
+      },
+      {
+        "term": "tuple",
+        "definition": "An immutable sequence whose explicitly stored elements may have different types",
+        "explanation": "tuple: A tuple cannot have its element references replaced after creation.",
+        "reviewRationale": "Tuple positions are immutable and can explicitly store heterogeneous values, unlike arithmetic ranges.",
+        "source": "https://docs.python.org/3/tutorial/"
+      },
+      {
+        "term": "dictionary",
+        "definition": "A mapping from hashable keys to values",
+        "explanation": "dictionary: Keys identify values rather than numeric positions.",
+        "reviewRationale": "Key lookup requires hashable keys.",
+        "source": "https://docs.python.org/3/tutorial/"
+      },
+      {
+        "term": "set",
+        "definition": "A collection of distinct hashable elements",
+        "explanation": "set: Duplicate insertions do not create extra elements.",
+        "reviewRationale": "Repeated equal elements collapse to one entry.",
+        "source": "https://docs.python.org/3/tutorial/"
+      },
+      {
+        "term": "range",
+        "definition": "An integer progression with an excluded stop",
+        "explanation": "range: range(2,5) visits 2, 3, and 4.",
+        "reviewRationale": "The stop bound is excluded.",
+        "source": "https://docs.python.org/3/tutorial/"
+      },
+      {
+        "term": "generator",
+        "definition": "An iterator that produces values lazily",
+        "explanation": "generator: yield suspends a function and retains its state.",
+        "reviewRationale": "yield preserves suspended execution state.",
+        "source": "https://docs.python.org/3/tutorial/"
+      },
+      {
+        "term": "context manager",
+        "definition": "An object defining managed entry and exit",
+        "explanation": "context manager: with invokes the context management protocol for cleanup.",
+        "reviewRationale": "The with protocol invokes entry and exit hooks.",
+        "source": "https://docs.python.org/3/tutorial/"
+      },
+      {
+        "term": "list comprehension",
+        "definition": "An expression constructing a list from iteration",
+        "explanation": "list comprehension: Its expression is evaluated for each accepted item.",
+        "reviewRationale": "Comprehensions evaluate an expression over accepted inputs.",
+        "source": "https://docs.python.org/3/tutorial/"
+      },
+      {
+        "term": "is",
+        "definition": "An operator testing object identity",
+        "explanation": "is: Identity asks whether two references denote the same object.",
+        "reviewRationale": "Identity differs from equal value.",
+        "source": "https://docs.python.org/3/tutorial/"
+      },
+      {
+        "term": "exception",
+        "definition": "A signal that changes normal control flow",
+        "explanation": "exception: A matching except clause can handle a raised exception.",
+        "reviewRationale": "An exception transfers control to a matching handler.",
+        "source": "https://docs.python.org/3/tutorial/"
+      }
+    ],
+    "javascript": [
+      {
+        "term": "const",
+        "definition": "A declaration preventing reassignment of a binding",
+        "explanation": "const: An object held by a const binding can still be mutated.",
+        "reviewRationale": "Binding immutability does not freeze referenced objects.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"
+      },
+      {
+        "term": "let",
+        "definition": "A block scoped variable declaration",
+        "explanation": "let: The binding belongs to the enclosing block.",
+        "reviewRationale": "Lexical block scope differs from var function scope.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"
+      },
+      {
+        "term": "strict equality",
+        "definition": "A comparison without coercing operand types",
+        "explanation": "strict equality: The === operator differs from coercive ==.",
+        "reviewRationale": "Strict comparison avoids type coercion.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"
+      },
+      {
+        "term": "map",
+        "definition": "An array operation producing one result per visited element",
+        "explanation": "map: The callback return values populate a new array.",
+        "reviewRationale": "map collects callback results for visited array entries.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"
+      },
+      {
+        "term": "filter",
+        "definition": "An array operation keeping elements passing a predicate",
+        "explanation": "filter: Only elements with truthy predicate results are retained.",
+        "reviewRationale": "filter retains entries with truthy predicate results.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"
+      },
+      {
+        "term": "reduce",
+        "definition": "An array operation accumulating a result",
+        "explanation": "reduce: An explicit initial accumulator makes empty input well defined.",
+        "reviewRationale": "An initial accumulator defines the empty-array result.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"
+      },
+      {
+        "term": "Promise",
+        "definition": "An object representing an eventual completion or failure",
+        "explanation": "Promise: Handlers observe fulfillment or rejection.",
+        "reviewRationale": "Promises have pending, fulfilled, or rejected state.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"
+      },
+      {
+        "term": "closure",
+        "definition": "A function together with access to its lexical environment",
+        "explanation": "closure: The environment can survive the outer function call.",
+        "reviewRationale": "Closures retain access to lexical bindings.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"
+      },
+      {
+        "term": "nullish coalescing",
+        "definition": "A fallback operator for null or undefined",
+        "explanation": "nullish coalescing: Unlike || it preserves 0 and the empty string.",
+        "reviewRationale": "Only null and undefined trigger this fallback; zero survives.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"
+      },
+      {
+        "term": "event loop",
+        "definition": "A mechanism coordinating queued work with execution",
+        "explanation": "event loop: Callbacks cannot interrupt a currently running synchronous task.",
+        "reviewRationale": "Synchronous JavaScript runs to completion before queued callbacks.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference"
+      }
+    ],
+    "java": [
+      {
+        "term": "class",
+        "definition": "A reference-type declaration that can define constructors and instance fields",
+        "explanation": "class: Instances share the behavior declared by their class.",
+        "reviewRationale": "Classes can declare constructors and instance fields; interfaces cannot.",
+        "source": "https://docs.oracle.com/javase/tutorial/"
+      },
+      {
+        "term": "interface",
+        "definition": "A type specifying a contract that classes can implement",
+        "explanation": "interface: Implementations supply behavior for abstract interface methods.",
+        "reviewRationale": "An interface defines behavior implemented by conforming classes.",
+        "source": "https://docs.oracle.com/javase/tutorial/"
+      },
+      {
+        "term": "static",
+        "definition": "A modifier associating a member with the class",
+        "explanation": "static: A static method does not have an instance this reference.",
+        "reviewRationale": "Static members belong to the class context.",
+        "source": "https://docs.oracle.com/javase/tutorial/"
+      },
+      {
+        "term": "final variable",
+        "definition": "A variable whose assignment cannot be changed once initialized",
+        "explanation": "final variable: A referenced mutable object may still change internally.",
+        "reviewRationale": "Final references can still point to mutable objects.",
+        "source": "https://docs.oracle.com/javase/tutorial/"
+      },
+      {
+        "term": "equals",
+        "definition": "A method for logical equality as defined by a class",
+        "explanation": "equals: Reference == instead compares identity.",
+        "reviewRationale": "equals is logical equality; reference == is identity.",
+        "source": "https://docs.oracle.com/javase/tutorial/"
+      },
+      {
+        "term": "ArrayList",
+        "definition": "A resizable ordered list implementation",
+        "explanation": "ArrayList: It supports indexed access and permits duplicate elements.",
+        "reviewRationale": "ArrayList preserves order and accepts duplicates.",
+        "source": "https://docs.oracle.com/javase/tutorial/"
+      },
+      {
+        "term": "HashMap",
+        "definition": "A hash based key value mapping",
+        "explanation": "HashMap: Equal keys address the same mapping entry.",
+        "reviewRationale": "HashMap identifies entries by key equality and hashing.",
+        "source": "https://docs.oracle.com/javase/tutorial/"
+      },
+      {
+        "term": "try with resources",
+        "definition": "A statement automatically closing declared resources",
+        "explanation": "try with resources: Resources implement AutoCloseable.",
+        "reviewRationale": "AutoCloseable resources are closed when leaving the statement.",
+        "source": "https://docs.oracle.com/javase/tutorial/"
+      },
+      {
+        "term": "checked exception",
+        "definition": "An exception type subject to compile time handling rules",
+        "explanation": "checked exception: It must be caught or declared when the rules require it.",
+        "reviewRationale": "Checked exceptions obey catch-or-declare rules.",
+        "source": "https://docs.oracle.com/javase/tutorial/"
+      },
+      {
+        "term": "generics",
+        "definition": "A facility parameterizing types and methods with types",
+        "explanation": "generics: Type parameters help the compiler reject incompatible uses.",
+        "reviewRationale": "Generic type parameters provide compile-time compatibility checks.",
+        "source": "https://docs.oracle.com/javase/tutorial/"
+      }
+    ],
+    "c": [
+      {
+        "term": "pointer",
+        "definition": "A value that can designate an object or function",
+        "explanation": "pointer: Dereferencing an invalid pointer has undefined behavior.",
+        "reviewRationale": "Pointer values must be valid for the attempted access.",
+        "source": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf"
+      },
+      {
+        "term": "array",
+        "definition": "A contiguous sequence of elements of one type",
+        "explanation": "array: Array indexing counts from zero.",
+        "reviewRationale": "Array elements occupy consecutive storage positions.",
+        "source": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf"
+      },
+      {
+        "term": "sizeof",
+        "definition": "An operator yielding an object or type size in bytes",
+        "explanation": "sizeof: Its result has type size_t.",
+        "reviewRationale": "sizeof returns a size_t byte count.",
+        "source": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf"
+      },
+      {
+        "term": "malloc",
+        "definition": "A function allocating uninitialized dynamic storage",
+        "explanation": "malloc: The caller must check failure and eventually release storage.",
+        "reviewRationale": "malloc does not initialize the allocated bytes.",
+        "source": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf"
+      },
+      {
+        "term": "free",
+        "definition": "A function releasing dynamically allocated storage",
+        "explanation": "free: Using the released allocation afterward is invalid.",
+        "reviewRationale": "A freed allocation cannot be accessed afterward.",
+        "source": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf"
+      },
+      {
+        "term": "struct",
+        "definition": "A type grouping named members",
+        "explanation": "struct: Members may have different types.",
+        "reviewRationale": "A struct groups members with possibly different types.",
+        "source": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf"
+      },
+      {
+        "term": "header",
+        "definition": "A file commonly used for shared declarations",
+        "explanation": "header: Including declarations lets translation units agree on interfaces.",
+        "reviewRationale": "Headers share declarations between translation units.",
+        "source": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf"
+      },
+      {
+        "term": "undefined behavior",
+        "definition": "Behavior for which the standard imposes no requirements",
+        "explanation": "undefined behavior: A program cannot rely on a predictable result afterward.",
+        "reviewRationale": "Undefined behavior has no required outcome.",
+        "source": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf"
+      },
+      {
+        "term": "null terminator",
+        "definition": "A zero character ending a C string",
+        "explanation": "null terminator: String operations need accessible terminating storage.",
+        "reviewRationale": "C strings require a terminating zero character.",
+        "source": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf"
+      },
+      {
+        "term": "static storage duration",
+        "definition": "A lifetime extending over the entire program execution",
+        "explanation": "static storage duration: A function local static retains its stored value between calls.",
+        "reviewRationale": "Static-duration objects exist throughout program execution.",
+        "source": "https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf"
+      }
+    ],
+    "cpp": [
+      {
+        "term": "RAII",
+        "definition": "Resource ownership tied to object lifetime",
+        "explanation": "RAII: Destructors release resources when owning objects are destroyed.",
+        "reviewRationale": "Object destruction can release an owned resource.",
+        "source": "https://eel.is/c++draft/"
+      },
+      {
+        "term": "vector",
+        "definition": "A dynamically sized sequence container",
+        "explanation": "vector: Ordinary vector<T> stores elements contiguously; vector<bool> is a specialized exception.",
+        "reviewRationale": "vector<bool> is a special exception to ordinary contiguous vectors.",
+        "source": "https://eel.is/c++draft/"
+      },
+      {
+        "term": "reference",
+        "definition": "An alias bound to an existing object or function",
+        "explanation": "reference: An ordinary reference cannot be reseated like a pointer.",
+        "reviewRationale": "References alias their bound target rather than being reseated.",
+        "source": "https://eel.is/c++draft/"
+      },
+      {
+        "term": "unique_ptr",
+        "definition": "A smart pointer representing exclusive ownership",
+        "explanation": "unique_ptr: It transfers ownership by moving and cannot be copied.",
+        "reviewRationale": "unique_ptr cannot be copied to share ownership.",
+        "source": "https://eel.is/c++draft/"
+      },
+      {
+        "term": "shared_ptr",
+        "definition": "A smart pointer using shared ownership",
+        "explanation": "shared_ptr: The managed object is destroyed when the last owner releases it.",
+        "reviewRationale": "The final shared owner releases the managed object.",
+        "source": "https://eel.is/c++draft/"
+      },
+      {
+        "term": "virtual function",
+        "definition": "A member supporting dynamic dispatch",
+        "explanation": "virtual function: An override can be selected through a base pointer or reference.",
+        "reviewRationale": "Virtual dispatch can select the dynamic override.",
+        "source": "https://eel.is/c++draft/"
+      },
+      {
+        "term": "template",
+        "definition": "A declaration parameterized by types or compile time values",
+        "explanation": "template: Instantiation produces a concrete specialization.",
+        "reviewRationale": "Template parameters specialize declarations for types or values.",
+        "source": "https://eel.is/c++draft/"
+      },
+      {
+        "term": "const member function",
+        "definition": "A member function whose this object is const qualified",
+        "explanation": "const member function: It cannot directly modify ordinary nonmutable data members.",
+        "reviewRationale": "Const access disallows ordinary nonmutable member writes.",
+        "source": "https://eel.is/c++draft/"
+      },
+      {
+        "term": "move semantics",
+        "definition": "Operations permitting transfer from expiring objects",
+        "explanation": "move semantics: A move may transfer resources without copying their contents.",
+        "reviewRationale": "Move operations can transfer resource ownership.",
+        "source": "https://eel.is/c++draft/"
+      },
+      {
+        "term": "iterator",
+        "definition": "An abstraction for traversing a sequence",
+        "explanation": "iterator: Past the end iterators are sentinels rather than dereferenceable elements.",
+        "reviewRationale": "The end iterator must not be dereferenced.",
+        "source": "https://eel.is/c++draft/"
+      }
+    ],
+    "csharp": [
+      {
+        "term": "class",
+        "definition": "A reference-type declaration that can define constructors and instance fields",
+        "explanation": "class: Two references may denote the same instance.",
+        "reviewRationale": "Class declarations can define constructors and instance fields; interface declarations cannot.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/csharp/"
+      },
+      {
+        "term": "struct",
+        "definition": "A declaration of a value type",
+        "explanation": "struct: Assignment copies the value including any references it contains.",
+        "reviewRationale": "Struct assignments copy values, including reference fields.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/csharp/"
+      },
+      {
+        "term": "property",
+        "definition": "A member exposing access through get or set accessors",
+        "explanation": "property: It can encapsulate validation around stored state.",
+        "reviewRationale": "Property access can run accessor logic.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/csharp/"
+      },
+      {
+        "term": "interface",
+        "definition": "A contract implemented by compatible types",
+        "explanation": "interface: Consumers can depend on the contract rather than a concrete class.",
+        "reviewRationale": "Interfaces describe contracts rather than requiring a concrete class.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/csharp/"
+      },
+      {
+        "term": "LINQ",
+        "definition": "Query operators for working with sequences and other sources",
+        "explanation": "LINQ: Many sequence operators use deferred execution.",
+        "reviewRationale": "Many LINQ sequence queries are evaluated when enumerated.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/csharp/"
+      },
+      {
+        "term": "async",
+        "definition": "A modifier enabling await in a method",
+        "explanation": "async: It does not by itself start a new thread.",
+        "reviewRationale": "async alone does not create a background thread.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/csharp/"
+      },
+      {
+        "term": "Task",
+        "definition": "A representation of an asynchronous operation",
+        "explanation": "Task: Await observes its completion and propagates failures.",
+        "reviewRationale": "Awaiting a Task observes completion and exceptions.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/csharp/"
+      },
+      {
+        "term": "using statement",
+        "definition": "A construct ensuring disposal of a resource",
+        "explanation": "using statement: It calls Dispose when control leaves the scope.",
+        "reviewRationale": "The using statement disposes its resource on scope exit.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/csharp/"
+      },
+      {
+        "term": "nullable value type",
+        "definition": "A value type augmented with a null state",
+        "explanation": "nullable value type: The T? form can represent a missing value.",
+        "reviewRationale": "Nullable value types add an absence state.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/csharp/"
+      },
+      {
+        "term": "delegate",
+        "definition": "A type representing a callable method reference",
+        "explanation": "delegate: A delegate has a specified parameter and return signature.",
+        "reviewRationale": "Delegates specify callable signatures.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/csharp/"
+      }
+    ],
+    "php": [
+      {
+        "term": "variable",
+        "definition": "A named value binding written with a dollar prefix",
+        "explanation": "variable: PHP variable names begin with $.",
+        "reviewRationale": "Ordinary PHP variable names start with a dollar sign.",
+        "source": "https://www.php.net/manual/en/"
+      },
+      {
+        "term": "array",
+        "definition": "An ordered map supporting integer and string keys",
+        "explanation": "array: PHP arrays are not limited to contiguous integer indexes.",
+        "reviewRationale": "PHP arrays are ordered key-value maps.",
+        "source": "https://www.php.net/manual/en/"
+      },
+      {
+        "term": "strict equality",
+        "definition": "A comparison requiring matching type and value",
+        "explanation": "strict equality: === avoids the coercions of ==.",
+        "reviewRationale": "The identity comparison requires matching value and type.",
+        "source": "https://www.php.net/manual/en/"
+      },
+      {
+        "term": "echo",
+        "definition": "A language construct writing output",
+        "explanation": "echo: It emits values rather than returning a formatted string.",
+        "reviewRationale": "echo writes output rather than constructing a returned string.",
+        "source": "https://www.php.net/manual/en/"
+      },
+      {
+        "term": "foreach",
+        "definition": "A construct iterating keys or values of an iterable",
+        "explanation": "foreach: It can expose both the current key and value.",
+        "reviewRationale": "foreach can iterate a key and its associated value.",
+        "source": "https://www.php.net/manual/en/"
+      },
+      {
+        "term": "prepared statement",
+        "definition": "A query whose parameter data is bound separately",
+        "explanation": "prepared statement: Binding avoids treating values as executable SQL syntax.",
+        "reviewRationale": "Parameters remain separate from SQL syntax.",
+        "source": "https://www.php.net/manual/en/"
+      },
+      {
+        "term": "session",
+        "definition": "A mechanism associating server side state with a session identifier",
+        "explanation": "session: The identifier is commonly carried in a browser cookie.",
+        "reviewRationale": "A session identifier associates requests with stored state.",
+        "source": "https://www.php.net/manual/en/"
+      },
+      {
+        "term": "namespace",
+        "definition": "A scope qualifying symbol names",
+        "explanation": "namespace: It reduces naming conflicts between libraries.",
+        "reviewRationale": "Qualified namespaces avoid library symbol collisions.",
+        "source": "https://www.php.net/manual/en/"
+      },
+      {
+        "term": "require",
+        "definition": "A construct loading another PHP file with failure treated as an error",
+        "explanation": "require: A missing required dependency prevents normal continuation.",
+        "reviewRationale": "Failure to require a dependency is an error.",
+        "source": "https://www.php.net/manual/en/"
+      },
+      {
+        "term": "null coalescing",
+        "definition": "A fallback operation when a value is missing or null",
+        "explanation": "null coalescing: The ?? operator preserves other falsey values.",
+        "reviewRationale": "The fallback preserves false and zero when nonnull.",
+        "source": "https://www.php.net/manual/en/"
+      }
+    ],
+    "sql": [
+      {
+        "term": "SELECT",
+        "definition": "A statement retrieving expressions or rows",
+        "explanation": "SELECT: It describes the result to produce.",
+        "reviewRationale": "SELECT specifies expressions and result rows.",
+        "source": "https://www.postgresql.org/docs/current/sql.html"
+      },
+      {
+        "term": "WHERE",
+        "definition": "A clause filtering input rows before grouping",
+        "explanation": "WHERE: Rows failing its predicate do not enter aggregation.",
+        "reviewRationale": "WHERE filters rows before grouped aggregates.",
+        "source": "https://www.postgresql.org/docs/current/sql.html"
+      },
+      {
+        "term": "HAVING",
+        "definition": "A clause filtering groups after grouping",
+        "explanation": "HAVING: It can reference aggregate results.",
+        "reviewRationale": "HAVING filters groups using group-level conditions.",
+        "source": "https://www.postgresql.org/docs/current/sql.html"
+      },
+      {
+        "term": "INNER JOIN",
+        "definition": "A join returning matching row combinations",
+        "explanation": "INNER JOIN: Unmatched input rows are excluded.",
+        "reviewRationale": "Inner joins retain matching combinations only.",
+        "source": "https://www.postgresql.org/docs/current/sql.html"
+      },
+      {
+        "term": "LEFT JOIN",
+        "definition": "A join retaining unmatched rows from the left input",
+        "explanation": "LEFT JOIN: Missing right hand values are represented by NULL.",
+        "reviewRationale": "Left joins preserve unmatched left input rows.",
+        "source": "https://www.postgresql.org/docs/current/sql.html"
+      },
+      {
+        "term": "COUNT(*)",
+        "definition": "An aggregate counting input rows",
+        "explanation": "COUNT(*): Unlike COUNT(column) it does not discard rows with NULL in that column.",
+        "reviewRationale": "COUNT(*) counts rows, including rows with null attributes.",
+        "source": "https://www.postgresql.org/docs/current/sql.html"
+      },
+      {
+        "term": "NULL",
+        "definition": "A marker for missing or unknown information",
+        "explanation": "NULL: Testing it uses IS NULL rather than = NULL.",
+        "reviewRationale": "IS NULL tests the null marker.",
+        "source": "https://www.postgresql.org/docs/current/sql.html"
+      },
+      {
+        "term": "ORDER BY",
+        "definition": "A clause defining result ordering",
+        "explanation": "ORDER BY: Without it row ordering is not guaranteed.",
+        "reviewRationale": "Only an ordering clause guarantees the requested ordering.",
+        "source": "https://www.postgresql.org/docs/current/sql.html"
+      },
+      {
+        "term": "transaction",
+        "definition": "A unit of work committed or rolled back together",
+        "explanation": "transaction: Its isolation level determines allowed concurrent observations.",
+        "reviewRationale": "Transactions commit or roll back a unit of work.",
+        "source": "https://www.postgresql.org/docs/current/sql.html"
+      },
+      {
+        "term": "primary key",
+        "definition": "A constraint uniquely identifying each table row",
+        "explanation": "primary key: Its columns cannot be NULL.",
+        "reviewRationale": "Standard primary keys are unique and nonnull.",
+        "source": "https://www.postgresql.org/docs/current/sql.html"
+      }
+    ],
+    "haskell": [
+      {
+        "term": "pure function",
+        "definition": "A function whose result depends on its inputs without observable side effects",
+        "explanation": "pure function: Referential transparency permits substitution of equal expressions.",
+        "reviewRationale": "Pure expressions support substitution without observable effects.",
+        "source": "https://www.haskell.org/documentation/"
+      },
+      {
+        "term": "lazy evaluation",
+        "definition": "Evaluation delaying an expression until its value is required",
+        "explanation": "lazy evaluation: An unused expression may never be evaluated.",
+        "reviewRationale": "Unused lazy computations need not be evaluated.",
+        "source": "https://www.haskell.org/documentation/"
+      },
+      {
+        "term": "list",
+        "definition": "A homogeneous sequence built from empty and cons constructors",
+        "explanation": "list: Elements in one list have the same type.",
+        "reviewRationale": "One list has a homogeneous element type.",
+        "source": "https://www.haskell.org/documentation/"
+      },
+      {
+        "term": "map",
+        "definition": "A function applying another function to each list element",
+        "explanation": "map: It preserves the list shape for finite lists.",
+        "reviewRationale": "map transforms each finite list element without filtering.",
+        "source": "https://www.haskell.org/documentation/"
+      },
+      {
+        "term": "foldl",
+        "definition": "A left associative fold over a structure",
+        "explanation": "foldl: The accumulator combines elements from the left.",
+        "reviewRationale": "foldl associates accumulated operations to the left.",
+        "source": "https://www.haskell.org/documentation/"
+      },
+      {
+        "term": "Maybe",
+        "definition": "A type representing Nothing or Just a value",
+        "explanation": "Maybe: It explicitly models a possible absence.",
+        "reviewRationale": "Maybe distinguishes absence from a present value.",
+        "source": "https://www.haskell.org/documentation/"
+      },
+      {
+        "term": "pattern matching",
+        "definition": "Selecting structure by matching constructors",
+        "explanation": "pattern matching: Patterns can bind the fields of a constructor.",
+        "reviewRationale": "Constructor patterns expose structured fields.",
+        "source": "https://www.haskell.org/documentation/"
+      },
+      {
+        "term": "type class",
+        "definition": "A collection of operations constrained by a type parameter",
+        "explanation": "type class: Instances provide implementations for specific types.",
+        "reviewRationale": "Type-class instances supply constrained operations.",
+        "source": "https://www.haskell.org/documentation/"
+      },
+      {
+        "term": "IO",
+        "definition": "A type describing an input output action",
+        "explanation": "IO: An IO value describes an action rather than a pure extracted result.",
+        "reviewRationale": "An IO action is not an already extracted pure result.",
+        "source": "https://www.haskell.org/documentation/"
+      },
+      {
+        "term": "currying",
+        "definition": "Representing multiple arguments as successive single arguments",
+        "explanation": "currying: Partial application yields another function.",
+        "reviewRationale": "Multiple parameters are represented by successive applications.",
+        "source": "https://www.haskell.org/documentation/"
+      }
+    ],
+    "html": [
+      {
+        "term": "semantic element",
+        "definition": "The category name for HTML tags chosen for document meaning rather than presentation",
+        "explanation": "semantic element: Meaningful structure helps accessibility and document interpretation.",
+        "reviewRationale": "This asks for the semantic category, not one particular tag in that category.",
+        "source": "https://html.spec.whatwg.org/multipage/"
+      },
+      {
+        "term": "alt attribute",
+        "definition": "Text providing an image alternative",
+        "explanation": "alt attribute: Informative images need alternatives expressing their purpose.",
+        "reviewRationale": "Alternative text represents the image's purpose.",
+        "source": "https://html.spec.whatwg.org/multipage/"
+      },
+      {
+        "term": "label",
+        "definition": "The HTML element associating descriptive text with a separate form control using for or containment",
+        "explanation": "label: Its for attribute associates it with a matching control id.",
+        "reviewRationale": "The label element associates text with a separate control through for or containment.",
+        "source": "https://html.spec.whatwg.org/multipage/"
+      },
+      {
+        "term": "button",
+        "definition": "An interactive element for an action",
+        "explanation": "button: Inside a form an explicit type avoids unintended submission.",
+        "reviewRationale": "Button type matters inside a form.",
+        "source": "https://html.spec.whatwg.org/multipage/"
+      },
+      {
+        "term": "anchor",
+        "definition": "An element creating a hyperlink with href",
+        "explanation": "anchor: A link navigates to a resource or document fragment.",
+        "reviewRationale": "href makes an anchor a hyperlink.",
+        "source": "https://html.spec.whatwg.org/multipage/"
+      },
+      {
+        "term": "id",
+        "definition": "An identifier expected to be unique in its document",
+        "explanation": "id: References can target a specific element by its id.",
+        "reviewRationale": "An id identifies one element within the document.",
+        "source": "https://html.spec.whatwg.org/multipage/"
+      },
+      {
+        "term": "class",
+        "definition": "A space separated set of reusable element tokens",
+        "explanation": "class: Many elements may share the same class token.",
+        "reviewRationale": "Class tokens can be shared by multiple elements.",
+        "source": "https://html.spec.whatwg.org/multipage/"
+      },
+      {
+        "term": "required",
+        "definition": "A boolean attribute enabling a mandatory form value constraint",
+        "explanation": "required: Its presence activates the constraint even if written required=\"false\".",
+        "reviewRationale": "Boolean attributes are true by presence, not string value.",
+        "source": "https://html.spec.whatwg.org/multipage/"
+      },
+      {
+        "term": "head",
+        "definition": "The element containing document metadata",
+        "explanation": "head: Metadata includes title and style or resource links.",
+        "reviewRationale": "The head contains document metadata.",
+        "source": "https://html.spec.whatwg.org/multipage/"
+      },
+      {
+        "term": "ordered list",
+        "definition": "A list represented by ol with li children",
+        "explanation": "ordered list: Sequence is meaningful for ordered items.",
+        "reviewRationale": "ol denotes a sequence whose order matters.",
+        "source": "https://html.spec.whatwg.org/multipage/"
+      }
+    ],
+    "css": [
+      {
+        "term": "selector",
+        "definition": "A pattern identifying elements a rule matches",
+        "explanation": "selector: Matching determines which elements receive declarations.",
+        "reviewRationale": "Selectors determine which elements match a rule.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+      },
+      {
+        "term": "specificity",
+        "definition": "A weight comparing competing selectors within cascade conditions",
+        "explanation": "specificity: It matters after origin importance and cascade layer ordering.",
+        "reviewRationale": "Specificity is considered after higher cascade criteria.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+      },
+      {
+        "term": "box sizing",
+        "definition": "A property controlling how declared dimensions are measured",
+        "explanation": "box sizing: border-box includes padding and borders in the specified width.",
+        "reviewRationale": "border-box includes padding and borders in declared dimensions.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+      },
+      {
+        "term": "margin",
+        "definition": "Space outside an element border",
+        "explanation": "margin: It differs from padding inside the border.",
+        "reviewRationale": "Margins lie outside the border.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+      },
+      {
+        "term": "padding",
+        "definition": "Space between content and border",
+        "explanation": "padding: It contributes to outer size under content-box sizing.",
+        "reviewRationale": "Padding lies between the content and border.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+      },
+      {
+        "term": "flexbox",
+        "definition": "A layout system primarily arranging items along one axis",
+        "explanation": "flexbox: The flex direction determines the main axis.",
+        "reviewRationale": "Flex layout has a primary main axis.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+      },
+      {
+        "term": "grid",
+        "definition": "A layout system organizing rows and columns",
+        "explanation": "grid: Tracks let items align in two dimensions.",
+        "reviewRationale": "Grid arranges elements across rows and columns.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+      },
+      {
+        "term": "custom property",
+        "definition": "An author defined property whose name starts with two hyphens",
+        "explanation": "custom property: var() substitutes its value in a declaration.",
+        "reviewRationale": "Custom properties are referenced through var().",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+      },
+      {
+        "term": "media query",
+        "definition": "A condition applying styles according to media features",
+        "explanation": "media query: Viewport width is one possible feature.",
+        "reviewRationale": "Media queries evaluate environmental conditions.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+      },
+      {
+        "term": "inheritance",
+        "definition": "Propagation of certain computed property values to descendants",
+        "explanation": "inheritance: Not every property inherits by default.",
+        "reviewRationale": "Only designated properties inherit by default.",
+        "source": "https://developer.mozilla.org/en-US/docs/Web/CSS"
+      }
+    ],
+    "react": [
+      {
+        "term": "component",
+        "definition": "A reusable unit describing part of a user interface",
+        "explanation": "component: A function component returns renderable content.",
+        "reviewRationale": "A component describes renderable interface content.",
+        "source": "https://react.dev/learn"
+      },
+      {
+        "term": "props",
+        "definition": "Read only inputs passed from a parent component",
+        "explanation": "props: A child should not mutate its received props.",
+        "reviewRationale": "Props are read-only inputs from a parent.",
+        "source": "https://react.dev/learn"
+      },
+      {
+        "term": "state",
+        "definition": "Component memory whose updates request rendering",
+        "explanation": "state: A setter schedules an update rather than mutating the current render snapshot.",
+        "reviewRationale": "State setters request a new render snapshot.",
+        "source": "https://react.dev/learn"
+      },
+      {
+        "term": "Hook",
+        "definition": "A function connecting components to React features",
+        "explanation": "Hook: Hooks must follow the rules of Hooks.",
+        "reviewRationale": "Hook calls must follow React's calling rules.",
+        "source": "https://react.dev/learn"
+      },
+      {
+        "term": "key",
+        "definition": "An identity hint for a child within a sibling list",
+        "explanation": "key: Stable keys let React track items across reorderings.",
+        "reviewRationale": "Keys identify siblings across renders.",
+        "source": "https://react.dev/learn"
+      },
+      {
+        "term": "effect",
+        "definition": "A mechanism synchronizing a component with an external system",
+        "explanation": "effect: Cleanup should undo the preceding setup when needed.",
+        "reviewRationale": "Effects synchronize external systems and may need cleanup.",
+        "source": "https://react.dev/learn"
+      },
+      {
+        "term": "controlled input",
+        "definition": "An input whose displayed value is driven by React state",
+        "explanation": "controlled input: An onChange handler updates the controlling state.",
+        "reviewRationale": "A controlled value is driven by state and change handling.",
+        "source": "https://react.dev/learn"
+      },
+      {
+        "term": "fragment",
+        "definition": "A grouping construct without an extra DOM wrapper",
+        "explanation": "fragment: It can return siblings as one renderable group.",
+        "reviewRationale": "Fragments avoid an extra DOM element.",
+        "source": "https://react.dev/learn"
+      },
+      {
+        "term": "functional state update",
+        "definition": "A setter callback deriving next state from pending state",
+        "explanation": "functional state update: It avoids relying on a stale captured value when queuing updates.",
+        "reviewRationale": "Updater callbacks receive the pending preceding state.",
+        "source": "https://react.dev/learn"
+      },
+      {
+        "term": "lifting state",
+        "definition": "Moving shared state to a common ancestor",
+        "explanation": "lifting state: Children then share one source of truth through props.",
+        "reviewRationale": "Shared state belongs in the closest common owner.",
+        "source": "https://react.dev/learn"
+      }
+    ],
+    "vue": [
+      {
+        "term": "ref",
+        "definition": "A reactive wrapper exposing a value property in JavaScript",
+        "explanation": "ref: Templates normally unwrap refs automatically.",
+        "reviewRationale": "JavaScript refs expose their wrapped value through .value.",
+        "source": "https://vuejs.org/guide/introduction.html"
+      },
+      {
+        "term": "computed",
+        "definition": "A cached reactive value derived from dependencies",
+        "explanation": "computed: Its getter reruns when tracked dependencies change.",
+        "reviewRationale": "Computed values track and cache reactive derivations.",
+        "source": "https://vuejs.org/guide/introduction.html"
+      },
+      {
+        "term": "v-if",
+        "definition": "A directive conditionally creating or removing content",
+        "explanation": "v-if: It differs from merely hiding an existing element.",
+        "reviewRationale": "v-if controls whether a branch is mounted.",
+        "source": "https://vuejs.org/guide/introduction.html"
+      },
+      {
+        "term": "v-show",
+        "definition": "A directive toggling display through CSS",
+        "explanation": "v-show: The element remains mounted when hidden.",
+        "reviewRationale": "v-show toggles display without unmounting.",
+        "source": "https://vuejs.org/guide/introduction.html"
+      },
+      {
+        "term": "v-for",
+        "definition": "A directive rendering a list from data",
+        "explanation": "v-for: Stable keys preserve identity during updates.",
+        "reviewRationale": "List keys should preserve stable item identity.",
+        "source": "https://vuejs.org/guide/introduction.html"
+      },
+      {
+        "term": "v-model",
+        "definition": "A directive connecting value binding and update events",
+        "explanation": "v-model: It supports two way form value synchronization.",
+        "reviewRationale": "v-model couples value input with update handling.",
+        "source": "https://vuejs.org/guide/introduction.html"
+      },
+      {
+        "term": "prop",
+        "definition": "A parent supplied component input",
+        "explanation": "prop: A child should emit an update rather than directly mutate a prop.",
+        "reviewRationale": "Children should not directly mutate parent props.",
+        "source": "https://vuejs.org/guide/introduction.html"
+      },
+      {
+        "term": "emit",
+        "definition": "A mechanism notifying a parent through a component event",
+        "explanation": "emit: The parent decides how to react to the event.",
+        "reviewRationale": "Component events let the parent choose its response.",
+        "source": "https://vuejs.org/guide/introduction.html"
+      },
+      {
+        "term": "watch",
+        "definition": "A mechanism running a callback when a source changes",
+        "explanation": "watch: It suits side effects rather than cached derivation.",
+        "reviewRationale": "Watch callbacks suit side effects.",
+        "source": "https://vuejs.org/guide/introduction.html"
+      },
+      {
+        "term": "slot",
+        "definition": "A placeholder for content supplied by a component consumer",
+        "explanation": "slot: Slots enable composition of reusable layouts.",
+        "reviewRationale": "Slots insert consumer-provided content.",
+        "source": "https://vuejs.org/guide/introduction.html"
+      }
+    ],
+    "node": [
+      {
+        "term": "event loop",
+        "definition": "A mechanism coordinating asynchronous callbacks",
+        "explanation": "event loop: Long synchronous work delays other callbacks.",
+        "reviewRationale": "Blocking work delays the main event loop.",
+        "source": "https://nodejs.org/api/"
+      },
+      {
+        "term": "Buffer",
+        "definition": "A representation of a sequence of bytes",
+        "explanation": "Buffer: It is suited to binary data rather than only text.",
+        "reviewRationale": "Buffers hold raw bytes.",
+        "source": "https://nodejs.org/api/"
+      },
+      {
+        "term": "stream",
+        "definition": "An interface processing data incrementally",
+        "explanation": "stream: It can avoid loading an entire input into memory.",
+        "reviewRationale": "Streams process data in successive chunks.",
+        "source": "https://nodejs.org/api/"
+      },
+      {
+        "term": "backpressure",
+        "definition": "A signal to slow a producer when a consumer cannot keep up",
+        "explanation": "backpressure: Respecting it prevents uncontrolled buffering.",
+        "reviewRationale": "Backpressure prevents a producer outrunning its consumer.",
+        "source": "https://nodejs.org/api/"
+      },
+      {
+        "term": "process.env",
+        "definition": "An object exposing process environment variables",
+        "explanation": "process.env: Values generally arrive as strings and require validation.",
+        "reviewRationale": "Environment input requires parsing and validation.",
+        "source": "https://nodejs.org/api/"
+      },
+      {
+        "term": "CommonJS",
+        "definition": "A module system using require and module.exports",
+        "explanation": "CommonJS: It differs from ES module import and export syntax.",
+        "reviewRationale": "CommonJS uses require and module.exports.",
+        "source": "https://nodejs.org/api/"
+      },
+      {
+        "term": "ES module",
+        "definition": "A module using standard import and export declarations",
+        "explanation": "ES module: Node chooses interpretation using extension and package configuration.",
+        "reviewRationale": "ES modules use import/export with Node module configuration.",
+        "source": "https://nodejs.org/api/"
+      },
+      {
+        "term": "fs promises",
+        "definition": "Promise returning filesystem operations",
+        "explanation": "fs promises: Await can sequence filesystem tasks without synchronous blocking calls.",
+        "reviewRationale": "Promise APIs avoid synchronous filesystem blocking calls.",
+        "source": "https://nodejs.org/api/"
+      },
+      {
+        "term": "EventEmitter",
+        "definition": "An object dispatching events to registered listeners",
+        "explanation": "EventEmitter: Listeners respond to named emitted events.",
+        "reviewRationale": "EventEmitter listeners respond to named emitted events.",
+        "source": "https://nodejs.org/api/"
+      },
+      {
+        "term": "worker thread",
+        "definition": "A separate JavaScript execution thread in the same process",
+        "explanation": "worker thread: It can move CPU intensive JavaScript off the main event loop.",
+        "reviewRationale": "Workers can run CPU-bound JavaScript off the main thread.",
+        "source": "https://nodejs.org/api/"
+      }
+    ],
+    "fastapi": [
+      {
+        "term": "path operation",
+        "definition": "A handler associated with an HTTP path and method",
+        "explanation": "path operation: Decorators register a handler for incoming requests.",
+        "reviewRationale": "A route is registered for an HTTP path and method.",
+        "source": "https://fastapi.tiangolo.com/tutorial/"
+      },
+      {
+        "term": "path parameter",
+        "definition": "A value extracted from a variable URL path segment",
+        "explanation": "path parameter: Type annotations can validate its conversion.",
+        "reviewRationale": "Path placeholders provide typed handler inputs.",
+        "source": "https://fastapi.tiangolo.com/tutorial/"
+      },
+      {
+        "term": "query parameter",
+        "definition": "A value supplied in the URL query string",
+        "explanation": "query parameter: It differs from a segment embedded in the path.",
+        "reviewRationale": "Query values are distinct from path segments.",
+        "source": "https://fastapi.tiangolo.com/tutorial/"
+      },
+      {
+        "term": "request body",
+        "definition": "Structured data sent as request content",
+        "explanation": "request body: A Pydantic model can validate its expected schema.",
+        "reviewRationale": "Pydantic models can validate structured request content.",
+        "source": "https://fastapi.tiangolo.com/tutorial/"
+      },
+      {
+        "term": "dependency",
+        "definition": "A reusable callable resolved through Depends",
+        "explanation": "dependency: It can provide shared validation resources or authentication inputs.",
+        "reviewRationale": "Depends resolves shared callable dependencies.",
+        "source": "https://fastapi.tiangolo.com/tutorial/"
+      },
+      {
+        "term": "response model",
+        "definition": "A declared schema for response validation and filtering",
+        "explanation": "response model: It helps prevent returning undeclared fields.",
+        "reviewRationale": "Response models can validate and filter exposed fields.",
+        "source": "https://fastapi.tiangolo.com/tutorial/"
+      },
+      {
+        "term": "HTTPException",
+        "definition": "An exception specifying an HTTP error response",
+        "explanation": "HTTPException: Raising it interrupts the handler with the selected status.",
+        "reviewRationale": "Raising HTTPException produces the selected error response.",
+        "source": "https://fastapi.tiangolo.com/tutorial/"
+      },
+      {
+        "term": "async handler",
+        "definition": "A coroutine path operation supporting await",
+        "explanation": "async handler: Blocking work still blocks its event loop if called directly.",
+        "reviewRationale": "Direct blocking calls still block an async event loop.",
+        "source": "https://fastapi.tiangolo.com/tutorial/"
+      },
+      {
+        "term": "OpenAPI",
+        "definition": "A machine readable API description generated from declarations",
+        "explanation": "OpenAPI: It powers interactive API documentation.",
+        "reviewRationale": "OpenAPI is a machine-readable API schema.",
+        "source": "https://fastapi.tiangolo.com/tutorial/"
+      },
+      {
+        "term": "TestClient",
+        "definition": "A client for exercising an ASGI app in tests",
+        "explanation": "TestClient: Tests can assert status codes and response data.",
+        "reviewRationale": "TestClient exercises the ASGI application.",
+        "source": "https://fastapi.tiangolo.com/tutorial/"
+      }
+    ],
+    "dotnet": [
+      {
+        "term": "CLR",
+        "definition": "The managed execution runtime for .NET",
+        "explanation": "CLR: It provides services such as managed execution and garbage collection.",
+        "reviewRationale": "CLR is the managed execution runtime.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/"
+      },
+      {
+        "term": "garbage collection",
+        "definition": "Automatic reclamation of unreachable managed memory",
+        "explanation": "garbage collection: It does not replace deterministic disposal of external resources.",
+        "reviewRationale": "Garbage collection does not replace resource disposal.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/"
+      },
+      {
+        "term": "assembly",
+        "definition": "A deployable unit containing .NET code and metadata",
+        "explanation": "assembly: Assemblies describe their contained types and references.",
+        "reviewRationale": "Assemblies contain compiled code and metadata.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/"
+      },
+      {
+        "term": "NuGet",
+        "definition": "The .NET package management ecosystem",
+        "explanation": "NuGet: Packages supply reusable libraries and related assets.",
+        "reviewRationale": "NuGet distributes .NET packages.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/"
+      },
+      {
+        "term": "dependency injection",
+        "definition": "Supplying dependencies rather than constructing them internally",
+        "explanation": "dependency injection: The container resolves services based on registrations.",
+        "reviewRationale": "Dependencies are supplied through registered contracts.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/"
+      },
+      {
+        "term": "singleton lifetime",
+        "definition": "A service lifetime shared by resolutions from a container",
+        "explanation": "singleton lifetime: A singleton must handle its actual concurrency requirements.",
+        "reviewRationale": "Singleton instances are shared by their container.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/"
+      },
+      {
+        "term": "scoped lifetime",
+        "definition": "A service lifetime shared within a dependency scope",
+        "explanation": "scoped lifetime: An ASP.NET Core request normally creates a scope.",
+        "reviewRationale": "Scoped instances are shared within a resolution scope.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/"
+      },
+      {
+        "term": "transient lifetime",
+        "definition": "A service lifetime creating a new instance for each resolution",
+        "explanation": "transient lifetime: Repeated resolutions need not return the same object.",
+        "reviewRationale": "Transient resolution constructs a fresh instance.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/"
+      },
+      {
+        "term": "middleware",
+        "definition": "A component in an HTTP request processing pipeline",
+        "explanation": "middleware: Order determines how requests and responses flow through it.",
+        "reviewRationale": "Middleware order changes request and response processing.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/"
+      },
+      {
+        "term": "configuration",
+        "definition": "A system combining application settings from providers",
+        "explanation": "configuration: Later providers may override earlier values for the same key.",
+        "reviewRationale": "Later configuration providers can override earlier values.",
+        "source": "https://learn.microsoft.com/en-us/dotnet/"
+      }
+    ],
+    "git": [
+      {
+        "term": "commit",
+        "definition": "A snapshot with metadata and parent references",
+        "explanation": "commit: A commit records repository state rather than only a textual diff.",
+        "reviewRationale": "A commit points to a tree and parent commits.",
+        "source": "https://git-scm.com/docs"
+      },
+      {
+        "term": "branch",
+        "definition": "A movable reference commonly pointing to the latest branch commit",
+        "explanation": "branch: New commits advance the checked out branch reference.",
+        "reviewRationale": "Branches are movable commit references.",
+        "source": "https://git-scm.com/docs"
+      },
+      {
+        "term": "index",
+        "definition": "The staging area defining content for the next commit",
+        "explanation": "index: Staged content may differ from both HEAD and the working tree.",
+        "reviewRationale": "The index stages the next snapshot.",
+        "source": "https://git-scm.com/docs"
+      },
+      {
+        "term": "HEAD",
+        "definition": "A reference identifying the current checkout",
+        "explanation": "HEAD: It usually points symbolically to the current branch.",
+        "reviewRationale": "HEAD commonly names the currently checked-out branch.",
+        "source": "https://git-scm.com/docs"
+      },
+      {
+        "term": "merge",
+        "definition": "An operation integrating histories",
+        "explanation": "merge: Divergent histories may produce a commit with multiple parents.",
+        "reviewRationale": "A merge integrates parent histories.",
+        "source": "https://git-scm.com/docs"
+      },
+      {
+        "term": "rebase",
+        "definition": "An operation replaying commits onto another base",
+        "explanation": "rebase: Replayed commits generally receive new identities.",
+        "reviewRationale": "Rebasing generally creates new commit identities.",
+        "source": "https://git-scm.com/docs"
+      },
+      {
+        "term": "fetch",
+        "definition": "An operation retrieving remote objects and updating remote tracking refs",
+        "explanation": "fetch: It does not itself merge changes into the current branch.",
+        "reviewRationale": "Fetch does not itself merge the current branch.",
+        "source": "https://git-scm.com/docs"
+      },
+      {
+        "term": "pull",
+        "definition": "An operation fetching then integrating remote changes",
+        "explanation": "pull: Integration depends on configured merge or rebase behavior.",
+        "reviewRationale": "Pull combines fetch with configured integration.",
+        "source": "https://git-scm.com/docs"
+      },
+      {
+        "term": "revert",
+        "definition": "An operation recording a new commit that undoes a change",
+        "explanation": "revert: It preserves earlier history rather than erasing the original commit.",
+        "reviewRationale": "Revert adds an undoing commit without deleting ancestry.",
+        "source": "https://git-scm.com/docs"
+      },
+      {
+        "term": ".gitignore",
+        "definition": "Patterns excluding matching untracked paths from routine tracking",
+        "explanation": ".gitignore: Ignoring a path does not remove an already tracked file.",
+        "reviewRationale": "Ignore patterns do not untrack committed files.",
+        "source": "https://git-scm.com/docs"
+      }
+    ],
+    "docker": [
+      {
+        "term": "image",
+        "definition": "A template of filesystem layers and execution configuration",
+        "explanation": "image: A container is created from an image.",
+        "reviewRationale": "An image packages layers and execution metadata.",
+        "source": "https://docs.docker.com/reference/"
+      },
+      {
+        "term": "container",
+        "definition": "An isolated process environment instantiated from an image",
+        "explanation": "container: It normally shares the host kernel rather than booting its own.",
+        "reviewRationale": "Containers usually share their host kernel.",
+        "source": "https://docs.docker.com/reference/"
+      },
+      {
+        "term": "Dockerfile",
+        "definition": "Instructions for building a container image",
+        "explanation": "Dockerfile: Build steps produce a reusable image.",
+        "reviewRationale": "Dockerfiles specify image build steps.",
+        "source": "https://docs.docker.com/reference/"
+      },
+      {
+        "term": "volume",
+        "definition": "Docker managed persistent storage mounted into containers",
+        "explanation": "volume: Its lifetime can outlast an individual container.",
+        "reviewRationale": "Volume data can outlast a container.",
+        "source": "https://docs.docker.com/reference/"
+      },
+      {
+        "term": "bind mount",
+        "definition": "A mount exposing a host path inside a container",
+        "explanation": "bind mount: Host path permissions and content affect what the container sees.",
+        "reviewRationale": "Bind mounts expose a selected host path.",
+        "source": "https://docs.docker.com/reference/"
+      },
+      {
+        "term": "port publishing",
+        "definition": "Mapping a host network port to a container port",
+        "explanation": "port publishing: EXPOSE alone does not publish a host port.",
+        "reviewRationale": "Publishing is separate from Dockerfile EXPOSE metadata.",
+        "source": "https://docs.docker.com/reference/"
+      },
+      {
+        "term": "build context",
+        "definition": "Files made available to an image build",
+        "explanation": "build context: COPY sources normally come from the context or a build stage.",
+        "reviewRationale": "Build-context boundaries govern available source files.",
+        "source": "https://docs.docker.com/reference/"
+      },
+      {
+        "term": "layer cache",
+        "definition": "Reuse of matching previously built image layers",
+        "explanation": "layer cache: Changes to earlier inputs can invalidate downstream build steps.",
+        "reviewRationale": "Cache reuse depends on matching prior inputs.",
+        "source": "https://docs.docker.com/reference/"
+      },
+      {
+        "term": "multi stage build",
+        "definition": "A build using multiple FROM stages",
+        "explanation": "multi stage build: Artifacts can be copied into a smaller final runtime stage.",
+        "reviewRationale": "Build stages can separate tooling from final artifacts.",
+        "source": "https://docs.docker.com/reference/"
+      },
+      {
+        "term": ".dockerignore",
+        "definition": "Patterns excluding paths from the build context",
+        "explanation": ".dockerignore: It reduces unnecessary context and helps avoid copying secrets.",
+        "reviewRationale": "Dockerignore excludes files from the build context.",
+        "source": "https://docs.docker.com/reference/"
+      }
+    ],
+    "compose": [
+      {
+        "term": "service",
+        "definition": "A definition describing how to run application containers",
+        "explanation": "service: A service can be instantiated as one or more containers.",
+        "reviewRationale": "A service defines how containers are instantiated.",
+        "source": "https://docs.docker.com/reference/compose-file/"
+      },
+      {
+        "term": "compose.yaml",
+        "definition": "A YAML file declaring a multi container application",
+        "explanation": "compose.yaml: It describes services networks and volumes together.",
+        "reviewRationale": "Compose YAML describes connected services and resources.",
+        "source": "https://docs.docker.com/reference/compose-file/"
+      },
+      {
+        "term": "depends_on",
+        "definition": "A declaration expressing dependencies between services",
+        "explanation": "depends_on: Short syntax orders startup but does not prove application readiness.",
+        "reviewRationale": "Startup order does not imply service readiness.",
+        "source": "https://docs.docker.com/reference/compose-file/"
+      },
+      {
+        "term": "healthcheck",
+        "definition": "A command based check of container health",
+        "explanation": "healthcheck: service_healthy dependencies wait for its successful health state.",
+        "reviewRationale": "Health-dependent startup requires a successful health check.",
+        "source": "https://docs.docker.com/reference/compose-file/"
+      },
+      {
+        "term": "named volume",
+        "definition": "A reusable volume declared for persistent application data",
+        "explanation": "named volume: Removing a container does not inherently delete the volume.",
+        "reviewRationale": "Named volume lifetime is independent of individual containers.",
+        "source": "https://docs.docker.com/reference/compose-file/"
+      },
+      {
+        "term": "default network",
+        "definition": "A network connecting services in one Compose project",
+        "explanation": "default network: Services can commonly resolve each other by service name.",
+        "reviewRationale": "Service names resolve on the project network.",
+        "source": "https://docs.docker.com/reference/compose-file/"
+      },
+      {
+        "term": "ports",
+        "definition": "Host to container port mappings",
+        "explanation": "ports: The first number in a simple HOST:CONTAINER mapping is the host port.",
+        "reviewRationale": "Simple port mapping lists host before container.",
+        "source": "https://docs.docker.com/reference/compose-file/"
+      },
+      {
+        "term": "environment",
+        "definition": "Values injected into a container process environment",
+        "explanation": "environment: They are distinct from build time arguments.",
+        "reviewRationale": "Runtime environment differs from image build arguments.",
+        "source": "https://docs.docker.com/reference/compose-file/"
+      },
+      {
+        "term": "profile",
+        "definition": "A way of conditionally enabling selected services",
+        "explanation": "profile: It can keep optional tools out of the default application set.",
+        "reviewRationale": "Profiles enable optional groups of services.",
+        "source": "https://docs.docker.com/reference/compose-file/"
+      },
+      {
+        "term": "up",
+        "definition": "A command creating and starting project services",
+        "explanation": "up: It reconciles the declared configuration with existing containers.",
+        "reviewRationale": "Up reconciles declarations and starts services.",
+        "source": "https://docs.docker.com/reference/compose-file/"
+      }
+    ],
+    "rest": [
+      {
+        "term": "resource",
+        "definition": "An identifiable conceptual target addressed by a URI",
+        "explanation": "resource: A representation describes resource state.",
+        "reviewRationale": "URIs identify resources; representations convey state.",
+        "source": "https://www.rfc-editor.org/rfc/rfc9110.html"
+      },
+      {
+        "term": "GET",
+        "definition": "An HTTP method requesting a selected representation",
+        "explanation": "GET: Its defined semantics are safe and idempotent.",
+        "reviewRationale": "GET semantics are safe and idempotent.",
+        "source": "https://www.rfc-editor.org/rfc/rfc9110.html"
+      },
+      {
+        "term": "POST",
+        "definition": "An HTTP method asking a resource to process request content",
+        "explanation": "POST: It is not inherently idempotent.",
+        "reviewRationale": "POST is not inherently idempotent.",
+        "source": "https://www.rfc-editor.org/rfc/rfc9110.html"
+      },
+      {
+        "term": "PUT",
+        "definition": "An HTTP method creating or replacing target resource state",
+        "explanation": "PUT: Its defined intent is idempotent.",
+        "reviewRationale": "PUT replacement has idempotent intent.",
+        "source": "https://www.rfc-editor.org/rfc/rfc9110.html"
+      },
+      {
+        "term": "DELETE",
+        "definition": "An HTTP method requesting removal of a target association",
+        "explanation": "DELETE: Repeated deletion has idempotent intent even if responses differ.",
+        "reviewRationale": "DELETE idempotency does not require identical status responses.",
+        "source": "https://www.rfc-editor.org/rfc/rfc9110.html"
+      },
+      {
+        "term": "201 Created",
+        "definition": "A success status indicating creation of one or more resources",
+        "explanation": "201 Created: A Location header can identify the primary created resource.",
+        "reviewRationale": "201 indicates newly created resources.",
+        "source": "https://www.rfc-editor.org/rfc/rfc9110.html"
+      },
+      {
+        "term": "204 No Content",
+        "definition": "A success status with no response content",
+        "explanation": "204 No Content: A client must not expect a JSON response body.",
+        "reviewRationale": "204 excludes response content.",
+        "source": "https://www.rfc-editor.org/rfc/rfc9110.html"
+      },
+      {
+        "term": "404 Not Found",
+        "definition": "A status indicating no current representation was found or disclosed",
+        "explanation": "404 Not Found: It does not establish whether a resource ever existed.",
+        "reviewRationale": "404 does not prove a resource never existed.",
+        "source": "https://www.rfc-editor.org/rfc/rfc9110.html"
+      },
+      {
+        "term": "statelessness",
+        "definition": "A constraint requiring requests to carry needed interaction context",
+        "explanation": "statelessness: It does not prohibit databases or stored resource state.",
+        "reviewRationale": "Stateless requests may still operate on persisted resources.",
+        "source": "https://www.rfc-editor.org/rfc/rfc9110.html"
+      },
+      {
+        "term": "content negotiation",
+        "definition": "Selecting a representation using request preferences and server capabilities",
+        "explanation": "content negotiation: Accept can express preferred response media types.",
+        "reviewRationale": "Accept expresses desired response media types.",
+        "source": "https://www.rfc-editor.org/rfc/rfc9110.html"
+      }
+    ],
+    "opencv": [
+      {
+        "term": "BGR",
+        "definition": "The usual channel order of images read by cv2.imread",
+        "explanation": "BGR: It differs from the RGB convention used by many display tools.",
+        "reviewRationale": "The usual imread color order is BGR.",
+        "source": "https://docs.opencv.org/4.x/"
+      },
+      {
+        "term": "grayscale",
+        "definition": "An image with one intensity channel",
+        "explanation": "grayscale: Removing color channels changes array shape and available information.",
+        "reviewRationale": "Grayscale has one intensity channel.",
+        "source": "https://docs.opencv.org/4.x/"
+      },
+      {
+        "term": "threshold",
+        "definition": "A pixelwise operation comparing intensity to a cutoff",
+        "explanation": "threshold: Binary thresholding maps each pixel to one of two values.",
+        "reviewRationale": "Binary thresholding chooses between two values.",
+        "source": "https://docs.opencv.org/4.x/"
+      },
+      {
+        "term": "resize",
+        "definition": "An operation changing image dimensions",
+        "explanation": "resize: cv2.resize uses an explicit size in width height order.",
+        "reviewRationale": "An explicit resize tuple uses width then height.",
+        "source": "https://docs.opencv.org/4.x/"
+      },
+      {
+        "term": "Gaussian blur",
+        "definition": "A smoothing operation using Gaussian weighted neighborhoods",
+        "explanation": "Gaussian blur: Smoothing can reduce high frequency noise.",
+        "reviewRationale": "Gaussian smoothing combines weighted neighboring pixels.",
+        "source": "https://docs.opencv.org/4.x/"
+      },
+      {
+        "term": "Canny",
+        "definition": "An edge detector using gradients and hysteresis",
+        "explanation": "Canny: Its two thresholds distinguish strong and connected weak edges.",
+        "reviewRationale": "Canny uses gradient information and hysteresis thresholds.",
+        "source": "https://docs.opencv.org/4.x/"
+      },
+      {
+        "term": "contour",
+        "definition": "A curve describing a boundary in a binary image",
+        "explanation": "contour: findContours extracts boundary point sequences.",
+        "reviewRationale": "Contours represent image boundaries.",
+        "source": "https://docs.opencv.org/4.x/"
+      },
+      {
+        "term": "ROI",
+        "definition": "A region of interest selected from an image",
+        "explanation": "ROI: NumPy slicing usually yields a view rather than an independent copy.",
+        "reviewRationale": "Ordinary NumPy slicing shares image storage.",
+        "source": "https://docs.opencv.org/4.x/"
+      },
+      {
+        "term": "cvtColor",
+        "definition": "A function converting between color representations",
+        "explanation": "cvtColor: The conversion code specifies source and destination conventions.",
+        "reviewRationale": "Color conversion requires the intended conversion code.",
+        "source": "https://docs.opencv.org/4.x/"
+      },
+      {
+        "term": "shape",
+        "definition": "An array attribute describing dimensions",
+        "explanation": "shape: A color image commonly has height width and channels dimensions.",
+        "reviewRationale": "Color array dimensions commonly mean height, width, channels.",
+        "source": "https://docs.opencv.org/4.x/"
+      }
+    ],
+    "numpy": [
+      {
+        "term": "ndarray",
+        "definition": "A multidimensional homogeneous array",
+        "explanation": "ndarray: A single dtype governs the array elements.",
+        "reviewRationale": "An ndarray has one element dtype.",
+        "source": "https://numpy.org/doc/stable/"
+      },
+      {
+        "term": "shape",
+        "definition": "A tuple of dimension lengths",
+        "explanation": "shape: The product of its entries gives the number of elements.",
+        "reviewRationale": "Dimension lengths multiply to the total element count.",
+        "source": "https://numpy.org/doc/stable/"
+      },
+      {
+        "term": "dtype",
+        "definition": "A description of array element representation",
+        "explanation": "dtype: It determines numeric range and storage characteristics.",
+        "reviewRationale": "Dtype controls representation and numeric capacity.",
+        "source": "https://numpy.org/doc/stable/"
+      },
+      {
+        "term": "broadcasting",
+        "definition": "Rules aligning compatible dimensions for elementwise operations",
+        "explanation": "broadcasting: Trailing dimensions must match or have length one.",
+        "reviewRationale": "Trailing broadcast dimensions must agree or be one.",
+        "source": "https://numpy.org/doc/stable/"
+      },
+      {
+        "term": "axis",
+        "definition": "A dimension selected for an operation",
+        "explanation": "axis: Reducing an axis combines values along that dimension.",
+        "reviewRationale": "An axis identifies the dimension being operated along.",
+        "source": "https://numpy.org/doc/stable/"
+      },
+      {
+        "term": "view",
+        "definition": "An array sharing an underlying data buffer",
+        "explanation": "view: Changes through a writable view can affect its base.",
+        "reviewRationale": "A writable view can mutate shared numeric storage.",
+        "source": "https://numpy.org/doc/stable/"
+      },
+      {
+        "term": "copy",
+        "definition": "An array with independently copied element storage",
+        "explanation": "copy: Changing its numeric elements does not change the source.",
+        "reviewRationale": "Copied numeric storage is independent.",
+        "source": "https://numpy.org/doc/stable/"
+      },
+      {
+        "term": "reshape",
+        "definition": "An operation changing shape without changing element count",
+        "explanation": "reshape: It can return a view when the layout permits.",
+        "reviewRationale": "Reshape preserves element count.",
+        "source": "https://numpy.org/doc/stable/"
+      },
+      {
+        "term": "boolean indexing",
+        "definition": "Selection by a boolean mask",
+        "explanation": "boolean indexing: Selected elements satisfy the mask rather than a contiguous slice rule.",
+        "reviewRationale": "Boolean masks select positions satisfying their predicate.",
+        "source": "https://numpy.org/doc/stable/"
+      },
+      {
+        "term": "vectorization",
+        "definition": "Expressing array operations through compiled array primitives",
+        "explanation": "vectorization: It often avoids a Python loop over individual elements.",
+        "reviewRationale": "Array primitives can avoid Python element-by-element loops.",
+        "source": "https://numpy.org/doc/stable/"
+      }
+    ],
+    "sqlalchemy": [
+      {
+        "term": "Engine",
+        "definition": "A factory and pool interface for database connectivity",
+        "explanation": "Engine: It is normally shared rather than created for every query.",
+        "reviewRationale": "An Engine manages database connectivity and pooling.",
+        "source": "https://docs.sqlalchemy.org/en/20/"
+      },
+      {
+        "term": "Session",
+        "definition": "An ORM unit of work tracking object and transaction state",
+        "explanation": "Session: It coordinates persistence of mapped objects.",
+        "reviewRationale": "A Session tracks ORM work and transaction state.",
+        "source": "https://docs.sqlalchemy.org/en/20/"
+      },
+      {
+        "term": "mapped class",
+        "definition": "A Python class associated with table metadata",
+        "explanation": "mapped class: ORM instances represent database related object state.",
+        "reviewRationale": "Mapped classes associate Python instances with table data.",
+        "source": "https://docs.sqlalchemy.org/en/20/"
+      },
+      {
+        "term": "select",
+        "definition": "A construct describing a SELECT statement",
+        "explanation": "select: Execution happens separately through a connection or session.",
+        "reviewRationale": "Building a SELECT does not execute it.",
+        "source": "https://docs.sqlalchemy.org/en/20/"
+      },
+      {
+        "term": "flush",
+        "definition": "An operation sending pending state changes into the current transaction",
+        "explanation": "flush: Flushing does not itself commit the transaction.",
+        "reviewRationale": "Flush sends changes but does not commit them.",
+        "source": "https://docs.sqlalchemy.org/en/20/"
+      },
+      {
+        "term": "commit",
+        "definition": "An operation completing the current database transaction",
+        "explanation": "commit: It makes transactional changes durable subject to database guarantees.",
+        "reviewRationale": "Commit completes the current transaction.",
+        "source": "https://docs.sqlalchemy.org/en/20/"
+      },
+      {
+        "term": "rollback",
+        "definition": "An operation abandoning current transactional changes",
+        "explanation": "rollback: It is needed to recover a session after many transaction errors.",
+        "reviewRationale": "Rollback recovers the transactional unit after failure.",
+        "source": "https://docs.sqlalchemy.org/en/20/"
+      },
+      {
+        "term": "identity map",
+        "definition": "A session mapping database identities to object instances",
+        "explanation": "identity map: It avoids separate live instances for the same identity within a session.",
+        "reviewRationale": "One session identity normally maps to one live ORM instance.",
+        "source": "https://docs.sqlalchemy.org/en/20/"
+      },
+      {
+        "term": "lazy loading",
+        "definition": "Fetching relationship data when it is first accessed",
+        "explanation": "lazy loading: Repeated access across many parents can cause an N plus one query pattern.",
+        "reviewRationale": "Lazy relationships can introduce repeated extra queries.",
+        "source": "https://docs.sqlalchemy.org/en/20/"
+      },
+      {
+        "term": "bound parameter",
+        "definition": "A value passed separately from SQL statement syntax",
+        "explanation": "bound parameter: It avoids SQL injection through value interpolation.",
+        "reviewRationale": "Bound parameters avoid mixing values with SQL syntax.",
+        "source": "https://docs.sqlalchemy.org/en/20/"
+      }
+    ],
+    "mysql": [
+      {
+        "term": "InnoDB",
+        "definition": "A transactional MySQL storage engine",
+        "explanation": "InnoDB: It supports transactions and foreign key enforcement.",
+        "reviewRationale": "InnoDB supports transactional and referential constraints.",
+        "source": "https://dev.mysql.com/doc/refman/8.4/en/"
+      },
+      {
+        "term": "AUTO_INCREMENT",
+        "definition": "A facility generating numeric identity values",
+        "explanation": "AUTO_INCREMENT: Generated identifiers are not guaranteed to be gap free.",
+        "reviewRationale": "Auto-increment identifiers can contain gaps.",
+        "source": "https://dev.mysql.com/doc/refman/8.4/en/"
+      },
+      {
+        "term": "EXPLAIN",
+        "definition": "A statement describing a query execution plan",
+        "explanation": "EXPLAIN: It helps inspect access paths and join strategy.",
+        "reviewRationale": "EXPLAIN describes a selected access plan.",
+        "source": "https://dev.mysql.com/doc/refman/8.4/en/"
+      },
+      {
+        "term": "index",
+        "definition": "A data structure supporting selected access patterns",
+        "explanation": "index: It can accelerate reads while adding write and storage costs.",
+        "reviewRationale": "Indexes trade read access benefits for write/storage cost.",
+        "source": "https://dev.mysql.com/doc/refman/8.4/en/"
+      },
+      {
+        "term": "foreign key",
+        "definition": "A constraint requiring references to valid related keys",
+        "explanation": "foreign key: Its actions govern allowed parent updates and deletes.",
+        "reviewRationale": "Foreign keys constrain allowed references.",
+        "source": "https://dev.mysql.com/doc/refman/8.4/en/"
+      },
+      {
+        "term": "utf8mb4",
+        "definition": "A MySQL character set supporting full Unicode code points",
+        "explanation": "utf8mb4: It can represent characters requiring four UTF-8 bytes.",
+        "reviewRationale": "utf8mb4 supports four-byte Unicode encodings.",
+        "source": "https://dev.mysql.com/doc/refman/8.4/en/"
+      },
+      {
+        "term": "LIMIT",
+        "definition": "A clause bounding the number of returned rows",
+        "explanation": "LIMIT: Predictable pagination also needs an appropriate ORDER BY.",
+        "reviewRationale": "A limit does not establish deterministic ordering.",
+        "source": "https://dev.mysql.com/doc/refman/8.4/en/"
+      },
+      {
+        "term": "GROUP BY",
+        "definition": "A clause collecting rows for grouped results",
+        "explanation": "GROUP BY: Aggregate functions summarize each group.",
+        "reviewRationale": "Grouping forms sets for aggregate calculations.",
+        "source": "https://dev.mysql.com/doc/refman/8.4/en/"
+      },
+      {
+        "term": "isolation level",
+        "definition": "Rules controlling visibility between concurrent transactions",
+        "explanation": "isolation level: Different levels permit different concurrency phenomena.",
+        "reviewRationale": "Isolation levels control allowed concurrent observations.",
+        "source": "https://dev.mysql.com/doc/refman/8.4/en/"
+      },
+      {
+        "term": "prepared statement",
+        "definition": "A statement separating SQL syntax from parameter values",
+        "explanation": "prepared statement: It avoids constructing queries by concatenating untrusted data.",
+        "reviewRationale": "Prepared data parameters are separated from statement syntax.",
+        "source": "https://dev.mysql.com/doc/refman/8.4/en/"
+      }
+    ],
+    "dynamodb": [
+      {
+        "term": "partition key",
+        "definition": "The primary key component determining item partition distribution",
+        "explanation": "partition key: A simple primary key consists only of this component.",
+        "reviewRationale": "The partition component determines key distribution.",
+        "source": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/"
+      },
+      {
+        "term": "sort key",
+        "definition": "The second component of a composite primary key",
+        "explanation": "sort key: It orders related items within one partition key value.",
+        "reviewRationale": "A composite key also includes a sort component.",
+        "source": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/"
+      },
+      {
+        "term": "Query",
+        "definition": "An operation selecting items by one partition key value",
+        "explanation": "Query: It can add a sort key condition but is not a whole table scan.",
+        "reviewRationale": "Query requires a partition-key equality condition.",
+        "source": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/"
+      },
+      {
+        "term": "Scan",
+        "definition": "An operation examining items across a table or index",
+        "explanation": "Scan: It can consume capacity even when a filter discards results.",
+        "reviewRationale": "Scan evaluates items even if filtering removes them.",
+        "source": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/"
+      },
+      {
+        "term": "GSI",
+        "definition": "An index with its own partition key and optional sort key",
+        "explanation": "GSI: Global secondary index reads are eventually consistent.",
+        "reviewRationale": "GSI reads do not offer strong consistency.",
+        "source": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/"
+      },
+      {
+        "term": "conditional write",
+        "definition": "A write applied only if a condition expression holds",
+        "explanation": "conditional write: It can enforce optimistic concurrency checks.",
+        "reviewRationale": "Conditional writes can reject stale versions atomically.",
+        "source": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/"
+      },
+      {
+        "term": "TTL",
+        "definition": "An expiry attribute supporting asynchronous item deletion",
+        "explanation": "TTL: Expired items may remain visible until background deletion occurs.",
+        "reviewRationale": "TTL deletion is asynchronous after expiration.",
+        "source": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/"
+      },
+      {
+        "term": "item",
+        "definition": "A collection of named attributes representing one record",
+        "explanation": "item: A table can store items with differing nonkey attributes.",
+        "reviewRationale": "Non-key item attributes can differ across records.",
+        "source": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/"
+      },
+      {
+        "term": "FilterExpression",
+        "definition": "A predicate applied after items are read",
+        "explanation": "FilterExpression: It does not reduce the read capacity consumed by those examined items.",
+        "reviewRationale": "Post-read filters do not reduce evaluated read capacity.",
+        "source": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/"
+      },
+      {
+        "term": "pagination",
+        "definition": "Continuing a read using its returned continuation key",
+        "explanation": "pagination: LastEvaluatedKey indicates where the next request can resume.",
+        "reviewRationale": "Continuation keys identify the next read position.",
+        "source": "https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/"
+      }
+    ],
+    "matlab": [
+      {
+        "term": "one based indexing",
+        "definition": "An indexing convention whose first ordinary index is one",
+        "explanation": "one based indexing: A(1) accesses the first element.",
+        "reviewRationale": "Ordinary first-element indexing begins at one.",
+        "source": "https://www.mathworks.com/help/matlab/"
+      },
+      {
+        "term": "matrix multiplication",
+        "definition": "The linear algebra product written with *",
+        "explanation": "matrix multiplication: Inner dimensions must agree.",
+        "reviewRationale": "Matrix products require compatible inner dimensions.",
+        "source": "https://www.mathworks.com/help/matlab/"
+      },
+      {
+        "term": "elementwise multiplication",
+        "definition": "Pairwise multiplication written with .*",
+        "explanation": "elementwise multiplication: Compatible arrays multiply corresponding elements.",
+        "reviewRationale": "Dot-star computes elementwise multiplication.",
+        "source": "https://www.mathworks.com/help/matlab/"
+      },
+      {
+        "term": "colon operator",
+        "definition": "An operator constructing ranges or selecting dimensions",
+        "explanation": "colon operator: 1:3 produces the values 1 2 3.",
+        "reviewRationale": "Colon notation creates sequences and selects dimensions.",
+        "source": "https://www.mathworks.com/help/matlab/"
+      },
+      {
+        "term": "semicolon",
+        "definition": "A statement terminator suppressing command window display",
+        "explanation": "semicolon: It does not prevent the computation itself.",
+        "reviewRationale": "A semicolon suppresses display, not execution.",
+        "source": "https://www.mathworks.com/help/matlab/"
+      },
+      {
+        "term": "anonymous function",
+        "definition": "A function handle defined with @ and an expression",
+        "explanation": "anonymous function: It can capture workspace values at creation.",
+        "reviewRationale": "Anonymous functions use an @ handle expression.",
+        "source": "https://www.mathworks.com/help/matlab/"
+      },
+      {
+        "term": "preallocation",
+        "definition": "Reserving output array storage before iterative filling",
+        "explanation": "preallocation: It avoids repeatedly growing an array in a loop.",
+        "reviewRationale": "Preallocation avoids repeated storage growth.",
+        "source": "https://www.mathworks.com/help/matlab/"
+      },
+      {
+        "term": "logical indexing",
+        "definition": "Selecting array elements using a logical mask",
+        "explanation": "logical indexing: Only entries corresponding to true mask values are selected.",
+        "reviewRationale": "Logical indexing retains true-mask positions.",
+        "source": "https://www.mathworks.com/help/matlab/"
+      },
+      {
+        "term": "column major order",
+        "definition": "A storage and linear indexing order traversing columns first",
+        "explanation": "column major order: A(:) lists entries down each column in turn.",
+        "reviewRationale": "Linear indexing traverses columns first.",
+        "source": "https://www.mathworks.com/help/matlab/"
+      },
+      {
+        "term": "size",
+        "definition": "A function returning array dimension lengths",
+        "explanation": "size: It differs from numel which counts all elements.",
+        "reviewRationale": "Size reports dimension lengths, not the total element count.",
+        "source": "https://www.mathworks.com/help/matlab/"
+      }
+    ],
+    "simulink": [
+      {
+        "term": "block",
+        "definition": "A unit defining a computation or model behavior",
+        "explanation": "block: Connected blocks form a signal processing or dynamic system model.",
+        "reviewRationale": "Blocks define component computations or behavior.",
+        "source": "https://www.mathworks.com/help/simulink/"
+      },
+      {
+        "term": "signal",
+        "definition": "A value carried between model blocks",
+        "explanation": "signal: Its type dimensions and sample timing affect compatibility.",
+        "reviewRationale": "Signals have dimensions, type, and sample timing.",
+        "source": "https://www.mathworks.com/help/simulink/"
+      },
+      {
+        "term": "Gain block",
+        "definition": "A block multiplying an input by a specified gain",
+        "explanation": "Gain block: Its multiplication mode determines scalar or matrix behavior.",
+        "reviewRationale": "Gain multiplication mode determines scalar or matrix interpretation.",
+        "source": "https://www.mathworks.com/help/simulink/"
+      },
+      {
+        "term": "Sum block",
+        "definition": "A block adding or subtracting configured input signals",
+        "explanation": "Sum block: The sign list determines each input contribution.",
+        "reviewRationale": "Sum signs determine each input contribution.",
+        "source": "https://www.mathworks.com/help/simulink/"
+      },
+      {
+        "term": "Unit Delay",
+        "definition": "A discrete block delaying a signal by one sample step",
+        "explanation": "Unit Delay: An initial condition defines its first output.",
+        "reviewRationale": "Unit Delay holds the prior sampled value.",
+        "source": "https://www.mathworks.com/help/simulink/"
+      },
+      {
+        "term": "Integrator",
+        "definition": "A block integrating a continuous input over time",
+        "explanation": "Integrator: Its initial condition establishes the initial state.",
+        "reviewRationale": "An integrator accumulates a continuous input from an initial state.",
+        "source": "https://www.mathworks.com/help/simulink/"
+      },
+      {
+        "term": "sample time",
+        "definition": "The timing specification for a block execution or signal update",
+        "explanation": "sample time: Mixed rates require deliberate rate handling.",
+        "reviewRationale": "Sample time determines update timing.",
+        "source": "https://www.mathworks.com/help/simulink/"
+      },
+      {
+        "term": "solver",
+        "definition": "A numerical method advancing a model simulation",
+        "explanation": "solver: Its selection depends on continuous and discrete model behavior.",
+        "reviewRationale": "Solvers numerically advance the modeled state.",
+        "source": "https://www.mathworks.com/help/simulink/"
+      },
+      {
+        "term": "subsystem",
+        "definition": "A grouping of blocks with an external interface",
+        "explanation": "subsystem: It organizes model hierarchy and reusable behavior.",
+        "reviewRationale": "Subsystems organize a block hierarchy and interface.",
+        "source": "https://www.mathworks.com/help/simulink/"
+      },
+      {
+        "term": "algebraic loop",
+        "definition": "A closed dependency of direct feedthrough computations",
+        "explanation": "algebraic loop: It can require solving simultaneous equations at a simulation step.",
+        "reviewRationale": "Direct-feedthrough cycles can require simultaneous solution.",
+        "source": "https://www.mathworks.com/help/simulink/"
+      }
+    ],
+    "wireshark": [
+      {
+        "term": "capture filter",
+        "definition": "A filter limiting which packets are captured",
+        "explanation": "capture filter: Its syntax differs from display filter syntax.",
+        "reviewRationale": "Capture filters restrict what gets recorded.",
+        "source": "https://www.wireshark.org/docs/wsug_html_chunked/"
+      },
+      {
+        "term": "display filter",
+        "definition": "A filter choosing which captured packets are shown",
+        "explanation": "display filter: Hidden packets remain in the capture file.",
+        "reviewRationale": "Display filters leave hidden packets in the capture.",
+        "source": "https://www.wireshark.org/docs/wsug_html_chunked/"
+      },
+      {
+        "term": "tcp.port",
+        "definition": "A display field matching a TCP source or destination port",
+        "explanation": "tcp.port: tcp.port == 443 can match either endpoint port.",
+        "reviewRationale": "tcp.port tests either TCP endpoint port.",
+        "source": "https://www.wireshark.org/docs/wsug_html_chunked/"
+      },
+      {
+        "term": "ip.addr",
+        "definition": "A display field matching an IPv4 source or destination address",
+        "explanation": "ip.addr: It can select traffic involving a given host.",
+        "reviewRationale": "ip.addr tests either IPv4 endpoint address.",
+        "source": "https://www.wireshark.org/docs/wsug_html_chunked/"
+      },
+      {
+        "term": "Follow TCP Stream",
+        "definition": "A feature reconstructing bytes of a TCP conversation",
+        "explanation": "Follow TCP Stream: Encrypted application bytes are not automatically plaintext.",
+        "reviewRationale": "Reassembled encrypted stream bytes remain encrypted.",
+        "source": "https://www.wireshark.org/docs/wsug_html_chunked/"
+      },
+      {
+        "term": "DNS",
+        "definition": "A protocol commonly mapping names to address information",
+        "explanation": "DNS: Its queries and responses can be inspected when visible in a capture.",
+        "reviewRationale": "DNS carries name-resolution questions and answers.",
+        "source": "https://www.wireshark.org/docs/wsug_html_chunked/"
+      },
+      {
+        "term": "TLS",
+        "definition": "A protocol protecting application traffic using encryption and authentication",
+        "explanation": "TLS: A capture alone normally does not reveal protected plaintext.",
+        "reviewRationale": "TLS protects traffic that cannot generally be read from a capture alone.",
+        "source": "https://www.wireshark.org/docs/wsug_html_chunked/"
+      },
+      {
+        "term": "pcapng",
+        "definition": "A capture file format supporting metadata and multiple interfaces",
+        "explanation": "pcapng: It stores captured packets for later analysis.",
+        "reviewRationale": "pcapng can include capture metadata and multiple interfaces.",
+        "source": "https://www.wireshark.org/docs/wsug_html_chunked/"
+      },
+      {
+        "term": "TCP retransmission",
+        "definition": "A sender transmitting previously sent sequence space again",
+        "explanation": "TCP retransmission: It can follow loss or reordering and is not proof of an attack.",
+        "reviewRationale": "Retransmission alone does not establish malicious activity.",
+        "source": "https://www.wireshark.org/docs/wsug_html_chunked/"
+      },
+      {
+        "term": "promiscuous mode",
+        "definition": "An interface mode accepting more link layer frames for capture",
+        "explanation": "promiscuous mode: It does not guarantee visibility of all traffic on a switched network.",
+        "reviewRationale": "Promiscuous mode cannot make unrelated switched traffic visible.",
+        "source": "https://www.wireshark.org/docs/wsug_html_chunked/"
+      }
+    ],
+    "openssl": [
+      {
+        "term": "digest",
+        "definition": "An output of a cryptographic hash function",
+        "explanation": "digest: Fixed-output hashes have a specified digest length; extendable-output functions such as SHAKE are an exception. Hashing is not reversible encryption.",
+        "reviewRationale": "Fixed-output digests and XOF outputs have different length rules.",
+        "source": "https://docs.openssl.org/3.0/man1/"
+      },
+      {
+        "term": "private key",
+        "definition": "Secret key material used in asymmetric cryptographic operations",
+        "explanation": "private key: It must be protected from disclosure.",
+        "reviewRationale": "Private asymmetric key material must remain secret.",
+        "source": "https://docs.openssl.org/3.0/man1/"
+      },
+      {
+        "term": "public key",
+        "definition": "Key material that can be shared to verify signatures or encrypt in suitable schemes",
+        "explanation": "public key: It does not allow deriving the private key in secure schemes.",
+        "reviewRationale": "Public keys can support verification or encryption in suitable schemes.",
+        "source": "https://docs.openssl.org/3.0/man1/"
+      },
+      {
+        "term": "certificate",
+        "definition": "A signed binding of identity information to a public key",
+        "explanation": "certificate: Trust depends on validation rather than merely possessing a certificate.",
+        "reviewRationale": "A certificate must be validated before trusting its identity claim.",
+        "source": "https://docs.openssl.org/3.0/man1/"
+      },
+      {
+        "term": "CSR",
+        "definition": "A signed request containing a public key and requested identity information",
+        "explanation": "CSR: A certificate authority can use it when issuing a certificate.",
+        "reviewRationale": "A CSR carries a public key and requested identity information.",
+        "source": "https://docs.openssl.org/3.0/man1/"
+      },
+      {
+        "term": "PEM",
+        "definition": "A textual encoding wrapping base64 data in labeled boundaries",
+        "explanation": "PEM: The label identifies the encoded object type.",
+        "reviewRationale": "PEM is a labeled textual base64 wrapper.",
+        "source": "https://docs.openssl.org/3.0/man1/"
+      },
+      {
+        "term": "DER",
+        "definition": "A binary encoding form used for ASN.1 structures",
+        "explanation": "DER: It differs from the textual PEM wrapper.",
+        "reviewRationale": "DER is a binary ASN.1 encoding.",
+        "source": "https://docs.openssl.org/3.0/man1/"
+      },
+      {
+        "term": "s_client",
+        "definition": "A diagnostic command establishing a TLS client connection",
+        "explanation": "s_client: Its output can help inspect server certificates and handshake details.",
+        "reviewRationale": "s_client diagnoses a TLS client connection.",
+        "source": "https://docs.openssl.org/3.0/man1/"
+      },
+      {
+        "term": "certificate chain",
+        "definition": "A sequence linking a leaf certificate toward a trusted issuer",
+        "explanation": "certificate chain: Validation also considers names validity and relevant constraints.",
+        "reviewRationale": "Chain validation also checks identity, validity, and constraints.",
+        "source": "https://docs.openssl.org/3.0/man1/"
+      },
+      {
+        "term": "random bytes",
+        "definition": "Unpredictable data produced by a suitable random generator",
+        "explanation": "random bytes: Security tokens need cryptographic randomness rather than predictable counters.",
+        "reviewRationale": "Security tokens require a cryptographic randomness source.",
+        "source": "https://docs.openssl.org/3.0/man1/"
+      }
+    ],
+    "cad": [
+      {
+        "term": "parametric modeling",
+        "definition": "Defining geometry through parameters and relationships",
+        "explanation": "parametric modeling: Changing a parameter can regenerate dependent geometry.",
+        "reviewRationale": "Parameters and dependencies can drive geometry regeneration.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "geometric constraint",
+        "definition": "A relation such as coincidence parallelism or tangency",
+        "explanation": "geometric constraint: It limits allowed geometric configurations.",
+        "reviewRationale": "Geometric constraints restrict allowed relationships.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "dimensional constraint",
+        "definition": "A relation fixing a geometric measurement",
+        "explanation": "dimensional constraint: A driving dimension changes geometry when edited.",
+        "reviewRationale": "Driving dimensions control specified measurements.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "degree of freedom",
+        "definition": "An independent permitted motion or geometric variation",
+        "explanation": "degree of freedom: Sufficient independent constraints remove unwanted freedom.",
+        "reviewRationale": "Degrees of freedom describe independent permitted variations.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "extrude",
+        "definition": "A feature extending a profile along a direction",
+        "explanation": "extrude: A valid profile and extent define the resulting shape.",
+        "reviewRationale": "Extrusion extends a valid profile along a direction.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "revolve",
+        "definition": "A feature sweeping a profile around an axis",
+        "explanation": "revolve: The angle controls how far the sweep turns.",
+        "reviewRationale": "Revolution sweeps a profile around an axis.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "fillet",
+        "definition": "A feature rounding an edge or corner",
+        "explanation": "fillet: Its radius must be feasible for the surrounding geometry.",
+        "reviewRationale": "A fillet replaces a sharp transition with rounding.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "chamfer",
+        "definition": "A feature replacing an edge with a beveled face",
+        "explanation": "chamfer: It differs from a curved fillet.",
+        "reviewRationale": "A chamfer creates a flat bevel.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "assembly",
+        "definition": "A model combining positioned component instances",
+        "explanation": "assembly: Relationships constrain how those components fit or move.",
+        "reviewRationale": "Assemblies position and relate component instances.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "STEP",
+        "definition": "A neutral format commonly used to exchange product geometry",
+        "explanation": "STEP: Exchanging geometry need not preserve the full native feature history.",
+        "reviewRationale": "STEP exchange need not preserve native feature history.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      }
+    ],
+    "inventor": [
+      {
+        "term": "part document",
+        "definition": "A document defining an individual modeled component",
+        "explanation": "part document: Native Inventor part files commonly use the ipt extension.",
+        "reviewRationale": "Part documents commonly use the ipt extension.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "assembly document",
+        "definition": "A document organizing component occurrences and relationships",
+        "explanation": "assembly document: Native assembly files commonly use the iam extension.",
+        "reviewRationale": "Assembly documents commonly use the iam extension.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "sketch",
+        "definition": "A planar or spatial profile defined with geometry and constraints",
+        "explanation": "sketch: A fully constrained sketch has no intended remaining freedom.",
+        "reviewRationale": "Fully constrained sketches remove unintended freedom.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "feature",
+        "definition": "A parametric modeling operation in the part history",
+        "explanation": "feature: Later features can depend on geometry made by earlier features.",
+        "reviewRationale": "Feature history may include dependent later operations.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "user parameter",
+        "definition": "A named value available to model expressions",
+        "explanation": "user parameter: Changing it can drive multiple dependent dimensions.",
+        "reviewRationale": "Named user parameters can drive multiple dimensions.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "iLogic",
+        "definition": "A rule system automating Inventor model behavior",
+        "explanation": "iLogic: Rules can drive parameters and configuration logic.",
+        "reviewRationale": "iLogic rules use supported VB.NET syntax.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "occurrence",
+        "definition": "An instance of a component placed in an assembly",
+        "explanation": "occurrence: Several occurrences may reference one source document.",
+        "reviewRationale": "An occurrence is an instance, not necessarily a separate source file.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "joint",
+        "definition": "An assembly relation specifying connection and allowed motion",
+        "explanation": "joint: Its type determines the remaining motion freedoms.",
+        "reviewRationale": "Joint type defines permitted relative motion.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "BOM",
+        "definition": "A structured bill of materials for an assembly",
+        "explanation": "BOM: It organizes component quantities and relevant properties.",
+        "reviewRationale": "Bills of materials describe structured component quantities.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      },
+      {
+        "term": "adaptive geometry",
+        "definition": "Geometry that can respond to related assembly context",
+        "explanation": "adaptive geometry: Dependencies must be managed to keep updates predictable.",
+        "reviewRationale": "Adaptive dependencies affect assembly-context updates.",
+        "source": "https://help.autodesk.com/view/INVNTOR/2025/ENU/"
+      }
+    ],
+    "cfd": [
+      {
+        "term": "mesh",
+        "definition": "A discretization of a fluid or solid domain into computational elements",
+        "explanation": "mesh: Resolution influences numerical accuracy and computational cost.",
+        "reviewRationale": "Mesh resolution affects cost and discretization error.",
+        "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-validate-convergence-in-Simulation-CFD.html"
+      },
+      {
+        "term": "boundary condition",
+        "definition": "A prescribed behavior at a domain boundary",
+        "explanation": "boundary condition: Inlet outlet and wall choices define the simulated problem.",
+        "reviewRationale": "Boundary conditions define the modeled inlet, outlet, and wall behavior.",
+        "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-validate-convergence-in-Simulation-CFD.html"
+      },
+      {
+        "term": "no slip wall",
+        "definition": "A boundary condition matching fluid velocity to wall velocity",
+        "explanation": "no slip wall: A stationary no slip wall has zero fluid velocity at the wall.",
+        "reviewRationale": "No-slip fluid velocity equals the wall velocity.",
+        "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-validate-convergence-in-Simulation-CFD.html"
+      },
+      {
+        "term": "continuity",
+        "definition": "Conservation of mass in a flow model",
+        "explanation": "continuity: Steady incompressible volume flow balances across boundaries.",
+        "reviewRationale": "Steady incompressible flow balances volume at boundaries.",
+        "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-validate-convergence-in-Simulation-CFD.html"
+      },
+      {
+        "term": "pressure drop",
+        "definition": "A pressure difference between selected locations",
+        "explanation": "pressure drop: It must be interpreted with specified reference and measurement locations.",
+        "reviewRationale": "Pressure differences require specified locations and references.",
+        "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-validate-convergence-in-Simulation-CFD.html"
+      },
+      {
+        "term": "turbulence model",
+        "definition": "An approximation representing effects of unresolved turbulent motion",
+        "explanation": "turbulence model: Its assumptions affect which flows it represents well.",
+        "reviewRationale": "Turbulence models approximate unresolved turbulent behavior.",
+        "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-validate-convergence-in-Simulation-CFD.html"
+      },
+      {
+        "term": "residual",
+        "definition": "A measure of imbalance in the discretized equations",
+        "explanation": "residual: Small residuals alone do not prove an accurate physical solution.",
+        "reviewRationale": "Residual reduction alone does not prove physical accuracy.",
+        "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-validate-convergence-in-Simulation-CFD.html"
+      },
+      {
+        "term": "mesh independence",
+        "definition": "A check of result sensitivity to further mesh refinement",
+        "explanation": "mesh independence: Stable quantities of interest support a discretization assessment.",
+        "reviewRationale": "Refinement sensitivity must be checked in quantities of interest.",
+        "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-validate-convergence-in-Simulation-CFD.html"
+      },
+      {
+        "term": "transient simulation",
+        "definition": "A simulation resolving time dependent evolution",
+        "explanation": "transient simulation: Time step sensitivity matters alongside spatial mesh sensitivity.",
+        "reviewRationale": "Transient models require time-step sensitivity checks.",
+        "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-validate-convergence-in-Simulation-CFD.html"
+      },
+      {
+        "term": "convergence",
+        "definition": "Approach toward a stable numerical solution under chosen criteria",
+        "explanation": "convergence: Mass balance and engineering outputs should be checked as well as residuals.",
+        "reviewRationale": "Convergence checks should include balances and engineering outputs.",
+        "source": "https://www.autodesk.com/support/technical/article/caas/sfdcarticles/sfdcarticles/How-to-validate-convergence-in-Simulation-CFD.html"
+      }
+    ],
+    "arduino": [
+      {
+        "term": "setup",
+        "definition": "A function run once after board startup or reset",
+        "explanation": "setup: It normally configures pins and initializes peripherals.",
+        "reviewRationale": "setup runs once after startup or reset.",
+        "source": "https://docs.arduino.cc/language-reference/"
+      },
+      {
+        "term": "loop",
+        "definition": "A function called repeatedly after setup finishes",
+        "explanation": "loop: It contains ongoing program behavior.",
+        "reviewRationale": "loop is repeatedly invoked after setup.",
+        "source": "https://docs.arduino.cc/language-reference/"
+      },
+      {
+        "term": "pinMode",
+        "definition": "A function selecting a digital pin input or output mode",
+        "explanation": "pinMode: A pin must be configured appropriately for its use.",
+        "reviewRationale": "Pin modes determine intended digital use.",
+        "source": "https://docs.arduino.cc/language-reference/"
+      },
+      {
+        "term": "digitalWrite",
+        "definition": "A function setting a digital output level",
+        "explanation": "digitalWrite: It selects HIGH or LOW rather than an arbitrary analog voltage.",
+        "reviewRationale": "Digital output uses HIGH or LOW logic levels.",
+        "source": "https://docs.arduino.cc/language-reference/"
+      },
+      {
+        "term": "digitalRead",
+        "definition": "A function reading a digital logic level",
+        "explanation": "digitalRead: It returns HIGH or LOW according to the input threshold behavior.",
+        "reviewRationale": "Digital input reports its thresholded logic state.",
+        "source": "https://docs.arduino.cc/language-reference/"
+      },
+      {
+        "term": "analogRead",
+        "definition": "A function sampling an analog input through the ADC",
+        "explanation": "analogRead: The numeric range depends on board and resolution settings.",
+        "reviewRationale": "ADC resolution and range depend on the board/configuration.",
+        "source": "https://docs.arduino.cc/language-reference/"
+      },
+      {
+        "term": "analogWrite",
+        "definition": "A function commonly producing PWM on supported pins",
+        "explanation": "analogWrite: It is not a universal guarantee of a true analog voltage output.",
+        "reviewRationale": "analogWrite commonly uses PWM rather than true analog voltage.",
+        "source": "https://docs.arduino.cc/language-reference/"
+      },
+      {
+        "term": "millis",
+        "definition": "A function reporting elapsed milliseconds as an unsigned value",
+        "explanation": "millis: Unsigned subtraction supports rollover safe interval checks.",
+        "reviewRationale": "Unsigned elapsed-time subtraction handles rollover within its range.",
+        "source": "https://docs.arduino.cc/language-reference/"
+      },
+      {
+        "term": "delay",
+        "definition": "A function pausing ordinary sketch execution for a duration",
+        "explanation": "delay: It makes simple timing easy but prevents other ordinary loop work meanwhile.",
+        "reviewRationale": "delay blocks ordinary sketch flow during the pause.",
+        "source": "https://docs.arduino.cc/language-reference/"
+      },
+      {
+        "term": "Serial",
+        "definition": "An interface for serial communication",
+        "explanation": "Serial: begin configures the communication rate where applicable.",
+        "reviewRationale": "Serial initialization rate behavior depends on the board/interface.",
+        "source": "https://docs.arduino.cc/language-reference/"
+      }
+    ]
+  }
+}
