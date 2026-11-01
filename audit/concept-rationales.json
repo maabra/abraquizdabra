@@ -394,5 +394,17 @@
     "Unsigned elapsed-time subtraction handles rollover within its range.",
     "delay blocks ordinary sketch flow during the pause.",
     "Serial initialization rate behavior depends on the board/interface."
+  ],
+  "typescript": [
+    "Explicit annotations constrain compile-time use; erased types do not validate external values.",
+    "Inference derives static types from initializers and contextual types without requiring annotations.",
+    "Union members are alternatives; operations on a union must be safe for its current narrowed type.",
+    "Control-flow analysis uses guards such as typeof to refine a union in the corresponding branch.",
+    "The interface keyword names an object contract checked structurally; it does not construct or validate runtime objects.",
+    "The type keyword names a type expression, including unions and tuples, rather than creating a distinct runtime entity.",
+    "A generic parameter preserves relationships between argument and result types, unlike untyped any.",
+    "Readonly restricts assignment through a type-checked reference; aliasing and nested mutation remain possible.",
+    "Unknown accepts arbitrary values but prevents type-specific operations until narrowing or an explicit assertion.",
+    "Never has no possible values, models unreachable cases, and is suitable as the return type of an always-throwing function."
   ]
 }

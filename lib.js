@@ -45,6 +45,30 @@ function codeTokens(value,language){
   return (String(value).match(/"(?:\\.|[^"\\])*"|'(?:\\.|[^'\\])*'|`(?:\\.|[^`\\])*`|(?:===|!==|=>|==|!=|<=|>=|\+\+|--|&&|\|\||\?\?|\*\*|\/\/|<<|>>|:=|\+=|-=|\*=|\/=|->|::)|[\p{L}_$][\p{L}\p{N}_$]*|\d+(?:\.\d+)?|[^\s]/gu)||[]).map(token=>language==='sql'&&!/^["'`]/.test(token)?token.toLowerCase():token);
 }
 export function canonicalMatch(input,expected,language=''){return JSON.stringify(codeTokens(input,language))===JSON.stringify(codeTokens(expected,language));}
+// Suggestions never affect grading. Require an otherwise matching token stream
+// and one small identifier edit; numbers, strings and operators stay exact.
+export function codeTypoHint(q,answer){
+  if(!['complete','create'].includes(q.type)||typeof answer!=='string'||answer.length>10000)return null;
+  const expected=q.type==='complete'?q.answer:q.solution;
+  if(typeof expected!=='string'||expected.length>10000)return null;
+  const actual=codeTokens(answer,q.language),model=codeTokens(expected,q.language);
+  if(actual.length!==model.length)return null;
+  const differences=actual.map((token,i)=>token===model[i]?null:i).filter(i=>i!==null);
+  if(differences.length!==1)return null;
+  const index=differences[0],from=actual[index],to=model[index];
+  const identifier=/^[\p{L}_$][\p{L}\p{N}_$]*$/u;
+  if(!identifier.test(from)||!identifier.test(to)||Math.min(from.length,to.length)<4||Math.max(from.length,to.length)>64)return null;
+  let close=false;
+  if(from.length===to.length){
+    const changed=[...from].map((c,i)=>c===to[i]?null:i).filter(i=>i!==null);
+    close=changed.length===1||(changed.length===2&&changed[1]===changed[0]+1&&from[changed[0]]===to[changed[1]]&&from[changed[1]]===to[changed[0]]);
+  }else if(Math.abs(from.length-to.length)===1){
+    const shorter=from.length<to.length?from:to,longer=from.length<to.length?to:from;
+    let i=0;while(i<shorter.length&&shorter[i]===longer[i])i++;
+    close=shorter.slice(i)===longer.slice(i+1);
+  }
+  return close?{from,to}:null;
+}
 export function gradeAnswer(q,answer){return q.type==='output'?numericMatch(answer,q.answer):q.type==='complete'?canonicalMatch(answer,q.answer,q.language):q.options?.includes(answer)&&answer===q.answer;}
 export function summarize(results){const valid=results.filter(r=>r&&['correct','incorrect','skipped'].includes(r.status));const graded=valid.filter(r=>!r.selfAssessed&&r.status!=='skipped');return {graded:graded.length,correct:graded.filter(r=>r.status==='correct').length,selfReviewed:valid.filter(r=>r.selfAssessed&&r.status!=='skipped').length,skipped:valid.filter(r=>r.status==='skipped').length};}
 
@@ -119,7 +143,7 @@ export function mergeProgress(current,incoming){
   if(!result.lastSession||(Date.parse(incoming.lastSession?.completedAt)||0)>(Date.parse(result.lastSession.completedAt)||0))result.lastSession=incoming.lastSession||result.lastSession;
   return result;
 }
-const aliases={javascript:'js ecmascript',python:'py',csharp:'csharp c sharp cs',cpp:'cpp c plus plus',dotnet:'dotnet dot net aspnet',node:'node nodejs node js',compose:'docker compose yaml',rest:'rest http api',inventor:'autodesk inventor ilogic',cfd:'autodesk cfd fluid dynamics',mysql:'my sql',numpy:'numpy arrays',opencv:'opencv cv2 computer vision'};
+const aliases={javascript:'js ecmascript',typescript:'ts type script',python:'py',csharp:'csharp c sharp cs',cpp:'cpp c plus plus',dotnet:'dotnet dot net aspnet',node:'node nodejs node js',compose:'docker compose yaml',rest:'rest http api',inventor:'autodesk inventor ilogic',cfd:'autodesk cfd fluid dynamics',mysql:'my sql',numpy:'numpy arrays',opencv:'opencv cv2 computer vision'};
 export function matchesTopic(topic,query){const needle=query.trim().toLowerCase();return !needle||`${topic.name} ${topic.category} ${aliases[topic.id]||''}`.toLowerCase().includes(needle);}
 
 export function validateQuestionBank(data,topic){

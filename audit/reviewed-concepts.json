@@ -2376,6 +2376,78 @@
         "reviewRationale": "Serial initialization rate behavior depends on the board/interface.",
         "source": "https://docs.arduino.cc/language-reference/"
       }
+    ],
+    "typescript": [
+      {
+        "term": "type annotation",
+        "definition": "An explicit type written on a variable, parameter, or return value",
+        "explanation": "type annotation: An annotation such as : number lets the compiler check compatible uses; it does not validate runtime input.",
+        "reviewRationale": "Explicit annotations constrain compile-time use; erased types do not validate external values.",
+        "source": "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-annotations-on-variables"
+      },
+      {
+        "term": "type inference",
+        "definition": "The compiler determining a type without an explicit annotation",
+        "explanation": "type inference: An initializer or surrounding context can supply type information.",
+        "reviewRationale": "Inference derives static types from initializers and contextual types without requiring annotations.",
+        "source": "https://www.typescriptlang.org/docs/handbook/type-inference.html"
+      },
+      {
+        "term": "union type",
+        "definition": "A type accepting values from any of its member types",
+        "explanation": "union type: A number or string value fits number | string; operations must be valid for the narrowed type.",
+        "reviewRationale": "Union members are alternatives; operations on a union must be safe for its current narrowed type.",
+        "source": "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#union-types"
+      },
+      {
+        "term": "narrowing",
+        "definition": "Refining a value to a more specific type through control flow checks",
+        "explanation": "narrowing: A typeof check can narrow number | string to number in one branch.",
+        "reviewRationale": "Control-flow analysis uses guards such as typeof to refine a union in the corresponding branch.",
+        "source": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html"
+      },
+      {
+        "term": "interface",
+        "definition": "A named object shape declared with the interface keyword",
+        "explanation": "interface: Compatible values must provide its required properties; an interface does not create runtime objects.",
+        "reviewRationale": "The interface keyword names an object contract checked structurally; it does not construct or validate runtime objects.",
+        "source": "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#interfaces"
+      },
+      {
+        "term": "type alias",
+        "definition": "A name introduced with type for an existing type expression",
+        "explanation": "type alias: An alias can name an object, union, tuple, or other type; it does not create a distinct runtime value.",
+        "reviewRationale": "The type keyword names a type expression, including unions and tuples, rather than creating a distinct runtime entity.",
+        "source": "https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#type-aliases"
+      },
+      {
+        "term": "generic type parameter",
+        "definition": "A type placeholder relating inputs and outputs across uses of a declaration",
+        "explanation": "generic type parameter: In function identity<T>(value: T): T the result preserves the argument type rather than discarding it as any.",
+        "reviewRationale": "A generic parameter preserves relationships between argument and result types, unlike untyped any.",
+        "source": "https://www.typescriptlang.org/docs/handbook/2/generics.html"
+      },
+      {
+        "term": "readonly property",
+        "definition": "A property that the type checker prevents assigning through that typed reference",
+        "explanation": "readonly property: readonly is a compile-time restriction and does not freeze an object or recursively make nested values immutable.",
+        "reviewRationale": "Readonly restricts assignment through a type-checked reference; aliasing and nested mutation remain possible.",
+        "source": "https://www.typescriptlang.org/docs/handbook/2/objects.html#readonly-properties"
+      },
+      {
+        "term": "unknown",
+        "definition": "A top type that requires checking before type-specific operations",
+        "explanation": "unknown: Any value can be assigned to unknown, but it must be narrowed or asserted before using it as a number.",
+        "reviewRationale": "Unknown accepts arbitrary values but prevents type-specific operations until narrowing or an explicit assertion.",
+        "source": "https://www.typescriptlang.org/docs/handbook/2/functions.html#unknown"
+      },
+      {
+        "term": "never",
+        "definition": "A type representing values that cannot occur",
+        "explanation": "never: Exhaustive narrowing can leave a variable with type never; a function that always throws can return never.",
+        "reviewRationale": "Never has no possible values, models unreachable cases, and is suitable as the return type of an always-throwing function.",
+        "source": "https://www.typescriptlang.org/docs/handbook/2/narrowing.html#the-never-type"
+      }
     ]
   }
 }

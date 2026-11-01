@@ -6600,6 +6600,226 @@
       "topic": "arduino",
       "band": "Very hard",
       "review": "Snippet family syntax, operations, boundaries, assumptions, and output target reviewed; numerical value checked separately for each record."
+    },
+    "e434d6d32bf03f7315fdb91dae6cacb7fe347d494b1371921c579ea81f22fc67": {
+      "topic": "typescript",
+      "band": "Easy",
+      "review": "Number annotations and precedence reviewed; numeric output checked by strict compiler execution and independent arithmetic."
+    },
+    "e83dce00b845422a821b280390bdb99d113c376c611861c99ff361bc4bfb2ce1": {
+      "topic": "typescript",
+      "band": "Easy",
+      "review": "Number annotations and precedence reviewed; numeric output checked by strict compiler execution and independent arithmetic."
+    },
+    "3d941ebd473d7a3974c6c977681295e6a4acbf6f3e3d3b30b0f291e915862091": {
+      "topic": "typescript",
+      "band": "Easy",
+      "review": "Number annotations and precedence reviewed; numeric output checked by strict compiler execution and independent arithmetic."
+    },
+    "204a4c17bc6b1d56f29e343f078e38568d0bf77d331b7f9ec992c72bd23a2187": {
+      "topic": "typescript",
+      "band": "Easy",
+      "review": "Number annotations and precedence reviewed; numeric output checked by strict compiler execution and independent arithmetic."
+    },
+    "1039d293c1c53f394cb38b518cad99c6ba1244b9effdc663daf21528d67819a0": {
+      "topic": "typescript",
+      "band": "Easy",
+      "review": "Number annotations and precedence reviewed; numeric output checked by strict compiler execution and independent arithmetic."
+    },
+    "de011bf8e3551623a39140065b162216b9124b91d0d52bb0e348086b47abbc49": {
+      "topic": "typescript",
+      "band": "Easy",
+      "review": "Number annotations and precedence reviewed; numeric output checked by strict compiler execution and independent arithmetic."
+    },
+    "e878848badd9ac61d20396446183475e3b21d89e7451fb18c129f936a93ee349": {
+      "topic": "typescript",
+      "band": "Easy",
+      "review": "Number annotations and precedence reviewed; numeric output checked by strict compiler execution and independent arithmetic."
+    },
+    "73be08eec1b3cef9cab883d87950d5ac9e1257c172337aff517755171a1c3e7d": {
+      "topic": "typescript",
+      "band": "Easy",
+      "review": "Number annotations and precedence reviewed; numeric output checked by strict compiler execution and independent arithmetic."
+    },
+    "fced5a51890d503cb6b71e024bb39f34f5bea24fd473f5c65bcd9528206a83b4": {
+      "topic": "typescript",
+      "band": "Easy",
+      "review": "Number annotations and precedence reviewed; numeric output checked by strict compiler execution and independent arithmetic."
+    },
+    "95858bebd948275a60caa3f988bb3c6822439a0375ce6adf16251a0458ae4993": {
+      "topic": "typescript",
+      "band": "Easy",
+      "review": "Number annotations and precedence reviewed; numeric output checked by strict compiler execution and independent arithmetic."
+    },
+    "440a963e711436a82cf3842461173c31493b457568f6d885dadecbddc8123f61": {
+      "topic": "typescript",
+      "band": "Easy",
+      "review": "Number annotations and precedence reviewed; numeric output checked by strict compiler execution and independent arithmetic."
+    },
+    "86fd1af9e10a447402515de752efb06f1fe03d1b01363002f9f6e02c14dab372": {
+      "topic": "typescript",
+      "band": "Medium",
+      "review": "Array.from creates 1..n; inclusive accumulation, inferred callback types and canonical blank reviewed; output checked independently."
+    },
+    "6fb41197055a71e1caa49daf7ad3067dc1df3eb2c880dd031390fa37451b08a6": {
+      "topic": "typescript",
+      "band": "Medium",
+      "review": "Array.from creates 1..n; inclusive accumulation, inferred callback types and canonical blank reviewed; output checked independently."
+    },
+    "d3856981e5459d2ad94587b8c9c47d5d0375af5f12d4604d0921fb16f3c189f7": {
+      "topic": "typescript",
+      "band": "Medium",
+      "review": "Array.from creates 1..n; inclusive accumulation, inferred callback types and canonical blank reviewed; output checked independently."
+    },
+    "28479609f13f8283c1d9c391e566f94a817bcd73d068a4cf32c3d93b9f7adaf1": {
+      "topic": "typescript",
+      "band": "Medium",
+      "review": "Array.from creates 1..n; inclusive accumulation, inferred callback types and canonical blank reviewed; output checked independently."
+    },
+    "a2e48a715c2b40731878326625f35b7a7b5a47339e33e1a8c0958320c4199e4b": {
+      "topic": "typescript",
+      "band": "Medium",
+      "review": "Array.from creates 1..n; inclusive accumulation, inferred callback types and canonical blank reviewed; output checked independently."
+    },
+    "848cd605564265bbc293ba69ab5d0ce359673c1afefcea9e1653f008a122788e": {
+      "topic": "typescript",
+      "band": "Medium",
+      "review": "Array.from creates 1..n; inclusive accumulation, inferred callback types and canonical blank reviewed; output checked independently."
+    },
+    "15352c490ecce5c3209cc3ff487da657f17c98687442c10afad958171fb5f6f7": {
+      "topic": "typescript",
+      "band": "Medium",
+      "review": "Array.from creates 1..n; inclusive accumulation, inferred callback types and canonical blank reviewed; output checked independently."
+    },
+    "975985d7857a65545c9f6622c8a94e226311fb104e78b34a8e10db84eb436bc2": {
+      "topic": "typescript",
+      "band": "Medium",
+      "review": "Array.from creates 1..n; inclusive accumulation, inferred callback types and canonical blank reviewed; output checked independently."
+    },
+    "56ed31146f39b931c538458e9b243d164cd97f6a51341d6dff7ac68a1985f456": {
+      "topic": "typescript",
+      "band": "Medium",
+      "review": "Array.from creates 1..n; inclusive accumulation, inferred callback types and canonical blank reviewed; output checked independently."
+    },
+    "39cd793cded031a064ccba7a0a0f5109251ba57df73e202a65f87d02a8e69f47": {
+      "topic": "typescript",
+      "band": "Medium",
+      "review": "Array.from creates 1..n; inclusive accumulation, inferred callback types and canonical blank reviewed; output checked independently."
+    },
+    "18bca0025dd59fa3953b84b47068bd0e9354923e54c34eb1b4ae7c0c1ab3b8f4": {
+      "topic": "typescript",
+      "band": "Medium",
+      "review": "Array.from creates 1..n; inclusive accumulation, inferred callback types and canonical blank reviewed; output checked independently."
+    },
+    "c77755cf8eef01b866a0860b210fecaf929e405bc3d635cae2f23ba895a5a6c0": {
+      "topic": "typescript",
+      "band": "Hard",
+      "review": "typeof narrows the union; string sentinel contributes zero; inclusive nested bounds and parity predicate reviewed; output independently recalculated."
+    },
+    "899af94c85600824943a0d320c72b4e90e5b9928797a37ba8a6f3c36b99657cd": {
+      "topic": "typescript",
+      "band": "Hard",
+      "review": "typeof narrows the union; string sentinel contributes zero; inclusive nested bounds and parity predicate reviewed; output independently recalculated."
+    },
+    "8283be400a3e024e45b0b34145e9baab84e4a10790fe75c86a76518399819db0": {
+      "topic": "typescript",
+      "band": "Hard",
+      "review": "typeof narrows the union; string sentinel contributes zero; inclusive nested bounds and parity predicate reviewed; output independently recalculated."
+    },
+    "143c8884075f2de442e02880f4e92e2f570ca080e130e79e57008818d96c4140": {
+      "topic": "typescript",
+      "band": "Hard",
+      "review": "typeof narrows the union; string sentinel contributes zero; inclusive nested bounds and parity predicate reviewed; output independently recalculated."
+    },
+    "7b5392ed6684c8d5c9ddf09bc75253a14e8e696be019eec755879e1352e12b14": {
+      "topic": "typescript",
+      "band": "Hard",
+      "review": "typeof narrows the union; string sentinel contributes zero; inclusive nested bounds and parity predicate reviewed; output independently recalculated."
+    },
+    "a99abc2205c8c48b358de5ea73a4b8c55a759d7a8c703323c014426a6f2354f1": {
+      "topic": "typescript",
+      "band": "Hard",
+      "review": "typeof narrows the union; string sentinel contributes zero; inclusive nested bounds and parity predicate reviewed; output independently recalculated."
+    },
+    "b02692ea65b6a2ea201306f9607527a69ea8e588bcd42be3ca577e89550cc866": {
+      "topic": "typescript",
+      "band": "Hard",
+      "review": "typeof narrows the union; string sentinel contributes zero; inclusive nested bounds and parity predicate reviewed; output independently recalculated."
+    },
+    "0aa3a73b88a40cc830712333db61aa698edc6cffaddd7634bbf6f8d12a8db4b4": {
+      "topic": "typescript",
+      "band": "Hard",
+      "review": "typeof narrows the union; string sentinel contributes zero; inclusive nested bounds and parity predicate reviewed; output independently recalculated."
+    },
+    "4126a177f19d67a8f9ec4b2e12352b7ec90ef4abd4c87f0921aa510fd71b94f0": {
+      "topic": "typescript",
+      "band": "Hard",
+      "review": "typeof narrows the union; string sentinel contributes zero; inclusive nested bounds and parity predicate reviewed; output independently recalculated."
+    },
+    "3546e2c871015ae9edd185ee0d2038ed81e2a8d88fb6b1532924be29745a7ca7": {
+      "topic": "typescript",
+      "band": "Hard",
+      "review": "typeof narrows the union; string sentinel contributes zero; inclusive nested bounds and parity predicate reviewed; output independently recalculated."
+    },
+    "1a03270892a166e3164266aba77569a08b89faacc03f095647d7a5e4f86b9b75": {
+      "topic": "typescript",
+      "band": "Hard",
+      "review": "typeof narrows the union; string sentinel contributes zero; inclusive nested bounds and parity predicate reviewed; output independently recalculated."
+    },
+    "2a0e22be0f81942ff22e0317587ad86ff194e574c49d2e2a897bff4b0e8fdc27": {
+      "topic": "typescript",
+      "band": "Very hard",
+      "review": "Generic helper returns a typed tuple; both arguments read the old state; n-1 recurrence steps and completion position reviewed; output independently recalculated."
+    },
+    "57bd7d0ec3dd2bdf75139b9032e98f849c3856348bbf30b4e76a29c108d64891": {
+      "topic": "typescript",
+      "band": "Very hard",
+      "review": "Generic helper returns a typed tuple; both arguments read the old state; n-1 recurrence steps and completion position reviewed; output independently recalculated."
+    },
+    "c6e0eb18f6bfd6e804bd6314658a0165ac192bc4e4e858bc68b864794c954ca7": {
+      "topic": "typescript",
+      "band": "Very hard",
+      "review": "Generic helper returns a typed tuple; both arguments read the old state; n-1 recurrence steps and completion position reviewed; output independently recalculated."
+    },
+    "bd8f9571baba0936111282cba9cbfaf8cf62cf0f1df234f35ebd0be3f4c683c1": {
+      "topic": "typescript",
+      "band": "Very hard",
+      "review": "Generic helper returns a typed tuple; both arguments read the old state; n-1 recurrence steps and completion position reviewed; output independently recalculated."
+    },
+    "bfbb7d6e9dd1b365f1927d03633b233fec38929b2283eb71959e0010ab5d2291": {
+      "topic": "typescript",
+      "band": "Very hard",
+      "review": "Generic helper returns a typed tuple; both arguments read the old state; n-1 recurrence steps and completion position reviewed; output independently recalculated."
+    },
+    "8c0569f2bfa122c080b0729e582f92dead2fc7b62acbea10e9f29f492c45765a": {
+      "topic": "typescript",
+      "band": "Very hard",
+      "review": "Generic helper returns a typed tuple; both arguments read the old state; n-1 recurrence steps and completion position reviewed; output independently recalculated."
+    },
+    "3a1caa8fb9cea44a2ded1fcecc8e01525349a2cf899d4256d4161741d42305c1": {
+      "topic": "typescript",
+      "band": "Very hard",
+      "review": "Generic helper returns a typed tuple; both arguments read the old state; n-1 recurrence steps and completion position reviewed; output independently recalculated."
+    },
+    "99c651d3b7015dc4b7782b4328816574d576b0c4683a9ded199aad195a731836": {
+      "topic": "typescript",
+      "band": "Very hard",
+      "review": "Generic helper returns a typed tuple; both arguments read the old state; n-1 recurrence steps and completion position reviewed; output independently recalculated."
+    },
+    "79b08d0c57d5b4037b7fc4d0f2734b15c0ac48445026f7560b7622d088ccc981": {
+      "topic": "typescript",
+      "band": "Very hard",
+      "review": "Generic helper returns a typed tuple; both arguments read the old state; n-1 recurrence steps and completion position reviewed; output independently recalculated."
+    },
+    "b98a0d821b2ac7c1abad89d4ebcb4782a88cd9defdb53203b85cbd50ac7a566f": {
+      "topic": "typescript",
+      "band": "Very hard",
+      "review": "Generic helper returns a typed tuple; both arguments read the old state; n-1 recurrence steps and completion position reviewed; output independently recalculated."
+    },
+    "4ba776bee16f376c915e02ea406d231333f1c834a99be3d87b7f1c0815fbea9c": {
+      "topic": "typescript",
+      "band": "Very hard",
+      "review": "Generic helper returns a typed tuple; both arguments read the old state; n-1 recurrence steps and completion position reviewed; output independently recalculated."
     }
   }
 }

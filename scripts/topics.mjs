@@ -25,6 +25,18 @@ closure|A function together with access to its lexical environment|The environme
 nullish coalescing|A fallback operator for null or undefined|Unlike || it preserves 0 and the empty string.
 event loop|A mechanism coordinating queued work with execution|Callbacks cannot interrupt a currently running synchronous task.
 `],
+['typescript','TypeScript','Languages','TS','https://www.typescriptlang.org/docs/handbook/',`
+type annotation|An explicit type written on a variable, parameter, or return value|An annotation such as : number lets the compiler check compatible uses; it does not validate runtime input.
+type inference|The compiler determining a type without an explicit annotation|An initializer or surrounding context can supply type information.
+union type|A type accepting values from any of its member types|A number or string value fits number | string; operations must be valid for the narrowed type.
+narrowing|Refining a value to a more specific type through control flow checks|A typeof check can narrow number | string to number in one branch.
+interface|A named object shape declared with the interface keyword|Compatible values must provide its required properties; an interface does not create runtime objects.
+type alias|A name introduced with type for an existing type expression|An alias can name an object, union, tuple, or other type; it does not create a distinct runtime value.
+generic type parameter|A type placeholder relating inputs and outputs across uses of a declaration|In function identity<T>(value: T): T the result preserves the argument type rather than discarding it as any.
+readonly property|A property that the type checker prevents assigning through that typed reference|readonly is a compile-time restriction and does not freeze an object or recursively make nested values immutable.
+unknown|A top type that requires checking before type-specific operations|Any value can be assigned to unknown, but it must be narrowed or asserted before using it as a number.
+never|A type representing values that cannot occur|Exhaustive narrowing can leave a variable with type never; a function that always throws can return never.
+`],
 ['java','Java','Languages','Jv','https://docs.oracle.com/javase/tutorial/',`
 class|A reference-type declaration that can define constructors and instance fields|Instances share the behavior declared by their class.
 interface|A type specifying a contract that classes can implement|Implementations supply behavior for abstract interface methods.

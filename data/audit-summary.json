@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-10-30T10:56:43.720Z",
-  "total": 6600,
-  "passed": 6600,
+  "generatedAt": "2026-11-01T23:27:38.495Z",
+  "total": 6800,
+  "passed": 6800,
   "failed": 0,
-  "theoryReviewed": 1320,
-  "independentlyCalculated": 5280,
-  "nativeExecutionCovered": 2880,
+  "theoryReviewed": 1360,
+  "independentlyCalculated": 5440,
+  "nativeExecutionCovered": 3040,
   "nativeExecutionNotCovered": 2400,
   "scope": "AI-assisted source and reasoning review, followed by checks independent of the question generator. This is not an external human certification.",
   "limits": "A passed independent calculation is distinct from execution in the actual language, framework, device or vendor application. Proprietary engineering applications, a DynamoDB account, an Arduino board and a Docker daemon are not available in this review environment. The question ledger states these limits rather than marking them as runtime passes.",
@@ -54,6 +54,16 @@
       "area": "Ambiguous theory definitions",
       "issue": "The tuple definition could also describe range; broad Java/C# reference-type definitions also described interfaces; generic HTML meaning/label descriptions overlapped concrete elements.",
       "fix": "Specify explicitly stored heterogeneous tuple elements, constructor/instance-field capability for classes, a category term for semantic elements, and explicit for/containment association for labels."
+    },
+    {
+      "area": "TypeScript addition and full-bank revalidation (2026-11-02)",
+      "issue": "TypeScript was absent from the bank and reference runtime checks.",
+      "fix": "Added 200 records, ten source-reviewed concepts, four typed snippet families, strict TypeScript 5.9.3 compilation and Node.js execution, independent Python calculations, and type-error/wrong-answer regression checks."
+    },
+    {
+      "area": "React Easy and Medium explanations",
+      "issue": "Easy rendered-expression explanations mentioned a reduction that was absent from the snippet.",
+      "fix": "Describe doubling only for Easy and the arithmetic-series reduction only for Medium; preserve the correct answers."
     }
   ]
 }

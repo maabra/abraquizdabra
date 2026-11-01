@@ -64,12 +64,14 @@ try{
   assert.equal(await evaluate(`!!document.querySelector('.xp-taskbar')`),false);
   await click('[data-action="start-menu"]');assert.equal(await evaluate(`document.querySelector('#start-menu').hidden`),false);
   await click('#start-menu [data-action="desktop-library"]');await wait(`location.hash==='#library'`);assert.equal(await evaluate(`document.querySelector('#start-menu').hidden`),true);
-  await evaluate(`location.hash='library'`);await wait(`document.querySelectorAll('.topic-card').length===33`);
+  await evaluate(`location.hash='library'`);await wait(`document.querySelectorAll('.topic-card').length===34`);
   await input('#topic-search',' c sharp ');assert.equal(await evaluate(`document.querySelectorAll('.topic-card').length`),1);
   await input('#topic-search','DynamoDB');assert.equal(await evaluate(`document.querySelectorAll('.topic-card').length`),1);
+  await input('#topic-search','type script');assert.equal(await evaluate(`document.querySelectorAll('.topic-card').length`),1);
+  assert.equal(await evaluate(`document.querySelector('[data-action="setup"]').dataset.topic`),'typescript');
   await input('#topic-search','not-a-real-topic');assert.equal(await evaluate(`!!document.querySelector('.topic-grid .empty')`),true);
   await input('#topic-search','');
-  await click('[data-action="filter"][data-category="Languages"]');assert.equal(await evaluate(`document.querySelectorAll('.topic-card').length`),11);
+  await click('[data-action="filter"][data-category="Languages"]');assert.equal(await evaluate(`document.querySelectorAll('.topic-card').length`),12);
   await click('[data-action="setup"][data-topic="python"]');await wait('document.querySelector("dialog").open');
   await shot('setup.png');
   await evaluate('document.querySelector("#setup-shuffle").checked=false');
@@ -93,7 +95,13 @@ try{
   await evaluate(`(()=>{const input=document.querySelector('#answer');input.focus();input.setSelectionRange(input.value.length,input.value.length);})()`);
   await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Tab',code:'Tab',windowsVirtualKeyCode:9});
   assert.equal(await evaluate(`document.querySelector('#answer').value.length`),10000);
-  await input('#answer','n = 3\nprint(n * 3 + 2)');await click('[data-action="check"]');
+  await input('#answer','n = 3\nprinz(n * 3 + 2)');await click('[data-action="check"]');
+  assert.match(await evaluate(`document.querySelector('[data-typo-hint]').innerText`),/prinz.*print/s);
+  assert.equal(await evaluate(`document.querySelector('#answer').disabled`),false);
+  assert.equal(await evaluate(`JSON.parse(localStorage.getItem('abraquizdabra.v1')).session.results.length`),4);
+  await input('#answer','n = 3\nprint(n * 3 + 2)');
+  assert.equal(await evaluate(`!!document.querySelector('[data-typo-hint]')`),false);
+  await click('[data-action="check"]');
   await wait('!!document.querySelector("[data-action=self-good]")');
   await send('Page.reload');await wait(`!!document.querySelector('[data-action="self-good"]')`);
   assert.equal(await evaluate(`document.querySelector('#answer').disabled`),true);
@@ -333,7 +341,7 @@ try{
   await send('Page.reload');await wait(`!!document.querySelector('#session-filter')`);
   assert.equal(await evaluate(`JSON.parse(localStorage.getItem('abraquizdabra.v1')).history.some(item=>item.id===${JSON.stringify(historyId)})`),false);
   await evaluate(`location.hash='about'`);await wait(`!!document.querySelector('.article')`);
-  assert.match(await evaluate('document.querySelector("main").innerText'),/132 topic\/band/);
+  assert.match(await evaluate('document.querySelector("main").innerText'),/136 topic\/band/);
   await send('Emulation.setDeviceMetricsOverride',{width:390,height:844,deviceScaleFactor:1,mobile:true});
   await evaluate(`localStorage.clear();location.hash='home'`);
   await send('Page.reload');await wait(`document.querySelectorAll('.topic-card').length===9`);
@@ -347,13 +355,35 @@ try{
   await click('[data-action="setup"][data-topic="python"]');await wait('document.querySelector("dialog").open');
   assert.equal(await evaluate(`document.querySelector('dialog').getBoundingClientRect().width<=innerWidth`),true);
   await shot('mobile-setup.png');await click('[data-action="close-dialog"]');
+  // A new topic must load its reviewed bank and grade through the real UI.
+  await click('[data-action="setup"][data-topic="typescript"]');
+  await evaluate('document.querySelector("#setup-shuffle").checked=false');
+  await click('[data-action="begin"]');await wait('!!document.querySelector(".question-card")');
+  const tsBank=JSON.parse(fs.readFileSync('data/typescript.json'));
+  const tsTheory=tsBank.find(q=>q.id==='typescript-0-theory-0');
+  await click(`[data-action="option"][data-index="${tsTheory.options.indexOf(tsTheory.answer)}"]`);await click('[data-action="check"]');
+  assert.equal(await evaluate(`document.querySelector('#feedback h2').textContent`),'Correct');
+  await click('[data-action="next"]');
+  const tsLogic=tsBank.find(q=>q.id==='typescript-0-logic-0');
+  await click(`[data-action="option"][data-index="${tsLogic.options.indexOf(tsLogic.answer)}"]`);await click('[data-action="check"]');
+  assert.equal(await evaluate(`document.querySelector('#feedback h2').textContent`),'Correct');
+  await click('[data-action="next"]');
+  await input('#answer',tsBank.find(q=>q.id==='typescript-0-output-0').answer);await click('[data-action="check"]');
+  assert.equal(await evaluate(`document.querySelector('#feedback h2').textContent`),'Correct');
+  await click('[data-action="next"]');
+  await input('#answer',tsBank.find(q=>q.id==='typescript-0-complete-0').answer);await click('[data-action="check"]');
+  await click('[data-action="next"]');
+  await input('#answer',tsBank.find(q=>q.id==='typescript-0-create-0').solution.replace('console','consoel'));await click('[data-action="check"]');
+  assert.match(await evaluate(`document.querySelector('[data-typo-hint]').innerText`),/consoel.*console/s);
+  await click('[data-action="submit-as-written"]');await wait(`!!document.querySelector('[data-action="self-good"]')`);
+  assert.equal(await evaluate(`JSON.parse(localStorage.getItem('abraquizdabra.v1')).session.results.length`),4);
   await evaluate(`location.hash='review'`);await wait(`!!document.querySelector('#review-status')`);
   assert.equal(await evaluate(`document.documentElement.scrollWidth<=innerWidth+1`),true);
   await shot('mobile-review.png');
 
   assert.equal(errors.length,0,JSON.stringify(errors));
   const mobileMetrics=await evaluate('({innerWidth,visualWidth:visualViewport.width,scrollWidth:document.documentElement.scrollWidth,mainWidth:document.querySelector("main").getBoundingClientRect().width})');
-  const report={status:'passed',checks:['answer review filters, retained skips, empty search, explanation and practice guard','personalized study recommendations and preselected practice setup','XP window maximize and restore','XP application menu navigation','repository-subpath asset loading','33-topic library and search','category filters','quiz setup','theory grading','logic interaction','output numeric grading','completion grading','creation self-review','bookmark persistence','reload with draft resume','session results and skips','completed-session back navigation','saved-question practice','HTML-safe answer rendering','save and exit resume','progress statistics','reset cancel','verification disclosure','desktop and mobile overflow','mobile navigation','search aliases and whitespace','creation reveal survives reload','result review preserves the session','completed results survive reload','progress import and automatic regrading','invalid import leaves existing progress intact','progress export download','practice-set availability and empty pools','unfinished-session replacement guard','canceling pending quiz setup','failed bank fetch preserves saved session','storage quota failure and retry','corrupt save and malformed index recovery','saved-question search and final-page removal','optional audit request failure','mobile backdrop and focus isolation','window preference survives reload','copy code and clipboard fallback','editor indentation respects character limits','reset cancels in-flight import','import preview before applying changes','parked sessions retain unfinished drafts','completed session history and review','previous-question and outline navigation preserve drafts','question notes persist as escaped plain text','saved-question status and note search','saved-set export and bulk removal preserve notes','topic favorites persist across reload','topic details disclose ten core concepts','shareable library filter URLs','large text and code wrapping persist','peer-tab conflict detection prevents overwrite','conflict merge preserves divergent drafts','recovery preview is non-destructive','reset recovery restores progress','changed question fingerprint refuses a quiz','history deletion survives reload','replacement requires explicit opt-in','conflict preview refreshes when peer changes again'],screenshots:['desktop.png','question.png','mobile.png','setup.png','mobile-setup.png','mobile-review.png'],mobileMetrics,runtimeExceptions:errors.length,assetRequests:requests.length};
+  const report={status:'passed',checks:['answer review filters, retained skips, empty search, explanation and practice guard','personalized study recommendations and preselected practice setup','XP window maximize and restore','XP application menu navigation','repository-subpath asset loading','34-topic library and search','category filters','quiz setup','theory grading','logic interaction','output numeric grading','completion grading','creation self-review','bookmark persistence','reload with draft resume','session results and skips','completed-session back navigation','saved-question practice','HTML-safe answer rendering','save and exit resume','progress statistics','reset cancel','verification disclosure','desktop and mobile overflow','mobile navigation','search aliases and whitespace','creation reveal survives reload','result review preserves the session','completed results survive reload','progress import and automatic regrading','invalid import leaves existing progress intact','progress export download','practice-set availability and empty pools','unfinished-session replacement guard','canceling pending quiz setup','failed bank fetch preserves saved session','storage quota failure and retry','corrupt save and malformed index recovery','saved-question search and final-page removal','optional audit request failure','mobile backdrop and focus isolation','window preference survives reload','copy code and clipboard fallback','editor indentation respects character limits','reset cancels in-flight import','import preview before applying changes','parked sessions retain unfinished drafts','completed session history and review','previous-question and outline navigation preserve drafts','question notes persist as escaped plain text','saved-question status and note search','saved-set export and bulk removal preserve notes','topic favorites persist across reload','topic details disclose ten core concepts','shareable library filter URLs','large text and code wrapping persist','peer-tab conflict detection prevents overwrite','conflict merge preserves divergent drafts','recovery preview is non-destructive','reset recovery restores progress','changed question fingerprint refuses a quiz','history deletion survives reload','replacement requires explicit opt-in','conflict preview refreshes when peer changes again'],screenshots:['desktop.png','question.png','mobile.png','setup.png','mobile-setup.png','mobile-review.png'],mobileMetrics,runtimeExceptions:errors.length,assetRequests:requests.length};
   fs.writeFileSync(path.join(qa,'browser-report.json'),JSON.stringify(report,null,2));
   console.log(`PASS: ${report.checks.length} browser checks, no runtime exceptions. Screenshots in .qa/.`);
 }finally{

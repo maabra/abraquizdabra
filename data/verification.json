@@ -1,13 +1,13 @@
 {
-  "generatedAt": "2026-10-31T00:31:27.930Z",
-  "questions": 6600,
-  "topics": 33,
+  "generatedAt": "2026-11-01T23:27:09.002Z",
+  "questions": 6800,
+  "topics": 34,
   "structuralChecks": "passed",
-  "executedCases": 440,
-  "unavailableCases": 44,
+  "executedCases": 528,
+  "unavailableCases": 0,
   "failedCases": 0,
   "notes": [
-    "Parameterized practice bank: 132 topic/band families with ten input variants and five question formats.",
+    "Parameterized practice bank: 136 topic/band families with ten input variants and five question formats.",
     "Difficulty labels indicate progression within a family, not independently calibrated expert difficulty.",
     "Runtime checks cover supported local interpreters only, including the extra input used in B comparisons.",
     "Theory and vendor GUI/model exercises have reference links but are not independently certified.",
@@ -1556,223 +1556,223 @@
     },
     {
       "id": "sqlalchemy-0-0",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-0-1",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-0-2",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-0-3",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-0-4",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-0-5",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-0-6",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-0-7",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-0-8",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-0-9",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-0-10",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-1-0",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-1-1",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-1-2",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-1-3",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-1-4",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-1-5",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-1-6",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-1-7",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-1-8",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-1-9",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-1-10",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-2-0",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-2-1",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-2-2",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-2-3",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-2-4",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-2-5",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-2-6",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-2-7",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-2-8",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-2-9",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-2-10",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-3-0",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-3-1",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-3-2",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-3-3",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-3-4",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-3-5",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-3-6",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-3-7",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-3-8",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-3-9",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "sqlalchemy-3-10",
-      "status": "unavailable",
-      "detail": "Missing local runtime dependency: sqlalchemy"
+      "status": "passed",
+      "detail": ""
     },
     {
       "id": "mysql-0-0",
@@ -1993,6 +1993,402 @@
       "id": "mysql-3-10",
       "status": "passed",
       "detail": ""
+    },
+    {
+      "id": "typescript-0-0",
+      "topic": "typescript",
+      "expected": 11,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 11,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-0-1",
+      "topic": "typescript",
+      "expected": 14,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 14,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-0-2",
+      "topic": "typescript",
+      "expected": 17,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 17,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-0-3",
+      "topic": "typescript",
+      "expected": 20,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 20,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-0-4",
+      "topic": "typescript",
+      "expected": 23,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 23,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-0-5",
+      "topic": "typescript",
+      "expected": 26,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 26,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-0-6",
+      "topic": "typescript",
+      "expected": 29,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 29,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-0-7",
+      "topic": "typescript",
+      "expected": 32,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 32,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-0-8",
+      "topic": "typescript",
+      "expected": 35,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 35,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-0-9",
+      "topic": "typescript",
+      "expected": 38,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 38,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-0-10",
+      "topic": "typescript",
+      "expected": 41,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 41,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-1-0",
+      "topic": "typescript",
+      "expected": 12,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 12,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-1-1",
+      "topic": "typescript",
+      "expected": 20,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 20,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-1-2",
+      "topic": "typescript",
+      "expected": 30,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 30,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-1-3",
+      "topic": "typescript",
+      "expected": 42,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 42,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-1-4",
+      "topic": "typescript",
+      "expected": 56,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 56,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-1-5",
+      "topic": "typescript",
+      "expected": 72,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 72,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-1-6",
+      "topic": "typescript",
+      "expected": 90,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 90,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-1-7",
+      "topic": "typescript",
+      "expected": 110,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 110,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-1-8",
+      "topic": "typescript",
+      "expected": 132,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 132,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-1-9",
+      "topic": "typescript",
+      "expected": 156,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 156,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-1-10",
+      "topic": "typescript",
+      "expected": 182,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 182,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-2-0",
+      "topic": "typescript",
+      "expected": 7,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 7,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-2-1",
+      "topic": "typescript",
+      "expected": 13,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 13,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-2-2",
+      "topic": "typescript",
+      "expected": 22,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 22,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-2-3",
+      "topic": "typescript",
+      "expected": 34,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 34,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-2-4",
+      "topic": "typescript",
+      "expected": 50,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 50,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-2-5",
+      "topic": "typescript",
+      "expected": 70,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 70,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-2-6",
+      "topic": "typescript",
+      "expected": 95,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 95,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-2-7",
+      "topic": "typescript",
+      "expected": 125,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 125,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-2-8",
+      "topic": "typescript",
+      "expected": 161,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 161,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-2-9",
+      "topic": "typescript",
+      "expected": 203,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 203,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-2-10",
+      "topic": "typescript",
+      "expected": 252,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 252,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-3-0",
+      "topic": "typescript",
+      "expected": 3,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 3,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-3-1",
+      "topic": "typescript",
+      "expected": 5,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 5,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-3-2",
+      "topic": "typescript",
+      "expected": 8,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 8,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-3-3",
+      "topic": "typescript",
+      "expected": 13,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 13,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-3-4",
+      "topic": "typescript",
+      "expected": 21,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 21,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-3-5",
+      "topic": "typescript",
+      "expected": 34,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 34,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-3-6",
+      "topic": "typescript",
+      "expected": 55,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 55,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-3-7",
+      "topic": "typescript",
+      "expected": 89,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 89,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-3-8",
+      "topic": "typescript",
+      "expected": 144,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 144,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-3-9",
+      "topic": "typescript",
+      "expected": 233,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 233,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
+    },
+    {
+      "id": "typescript-3-10",
+      "topic": "typescript",
+      "expected": 377,
+      "runtime": "typescript",
+      "status": "passed",
+      "actual": 377,
+      "method": "TypeScript 5.9.3 strict type-check; ES2022 JavaScript emitted by compiler and executed in Node.js"
     },
     {
       "id": "git-0-0",

@@ -18,22 +18,22 @@ npm run test:browser
 
 On Windows PowerShell, use `npm.cmd` if script execution policy blocks `npm.ps1`. Browser checks require Chrome, Chromium, or Edge; set `QUIZ_BROWSER` to its executable if it is not found automatically. Set `QUIZ_SITE_DIR=dist` to test the deployment package. `npm run dev` serves the source site at http://127.0.0.1:4173.
 
-GitHub Actions runs the build, reference audit, tests, and browser checks against `dist` under a repository URL prefix. `QUIZ_REQUIRE_RUNTIMES=1` requires the supported Python, JavaScript, shell, and browser checks to pass; optional native hosts remain disclosed separately. Framework audit dependencies are locked in `audit/runtime/package-lock.json` and never included in the deployed site. Verification reports and screenshots are retained as workflow artifacts for seven days, including on failure.
+GitHub Actions runs the build, reference audit, tests, and browser checks against `dist` under a repository URL prefix. `QUIZ_REQUIRE_RUNTIMES=1` requires the supported Python, JavaScript, TypeScript, shell, and browser checks to pass; optional native hosts remain disclosed separately. Framework audit dependencies are locked in `audit/runtime/package-lock.json` and never included in the deployed site. Verification reports and screenshots are retained as workflow artifacts for seven days, including on failure.
 
 Deployment runs only for `main`, after all checks pass. In repository **Settings → Pages**, select **GitHub Actions** as the build source. The published project URL is https://maabra.github.io/programming-questionnaire/. Pull requests run validation without publishing. Keep `scripts/` in version control: both CI and local verification depend on those files. Packaging rebuilds `dist` from the public asset allowlist to remove stale files.
 
 ## Question bank
 
-The bank contains **6,600 question records across 33 topics**. Each topic has 200 questions, divided into 50 Easy, 50 Medium, 50 Hard, and 50 Very hard records.
+The bank contains **6,800 question records across 34 topics**. Each topic has 200 questions, divided into 50 Easy, 50 Medium, 50 Hard, and 50 Very hard records.
 
 Topics include:
 
-- **Languages:** Python, JavaScript, Java, C, C++, C#, PHP, SQL, Haskell, HTML, and CSS.
+- **Languages:** Python, JavaScript, TypeScript, Java, C, C++, C#, PHP, SQL, Haskell, HTML, and CSS.
 - **Frameworks and tools:** React, Vue, Node.js, FastAPI, .NET, Git, Docker, Docker Compose, REST API, OpenCV, NumPy, and SQLAlchemy.
 - **Data and analysis:** MySQL, DynamoDB, MATLAB, Simulink, Wireshark, and OpenSSL.
 - **Design and hardware:** CAD, Autodesk Inventor, Autodesk CFD, and Arduino.
 
-Questions use parameterized variants of 132 topic/difficulty families. Related exercises repeat concepts with different inputs or formats; the total does not represent 6,600 distinct concepts. Difficulty bands describe progression within a family and are not a calibrated measure of professional proficiency.
+Questions use parameterized variants of 136 topic/difficulty families. Related exercises repeat concepts with different inputs or formats; the total does not represent 6,800 distinct concepts. Difficulty bands describe progression within a family and are not a calibrated measure of professional proficiency.
 
 ## How quizzes work
 
@@ -61,7 +61,9 @@ My progress recommends up to three topics, prioritizing questions ready for revi
 
 ## Code answers
 
-Submitted code is never executed by the website. Output questions compare numeric values, while completion questions compare the submitted text with a canonical answer, comparing lexical tokens while preserving quoted text, identifier boundaries, and compound operators. SQL keywords are compared without case sensitivity. Other valid implementations may need self-assessment. Code blocks include a copy control with a selection fallback when clipboard access is unavailable.
+Submitted code is never executed by the website. Output questions compare numeric values, while completion questions compare the submitted text with a canonical answer, comparing lexical tokens while preserving quoted text, identifier boundaries, and compound operators. SQL keywords are compared without case sensitivity. Other valid implementations may need self-assessment.
+
+Before a code completion is graded or a creation model is revealed, an otherwise matching answer with one likely identifier typo (such as `prinz` for `print`) receives an advisory hint. Single-letter substitutions, missing/extra letters, and adjacent swaps in identifiers of at least four characters are recognized. Edit and check again, or submit as written. Hints never change the answer or award correctness, and do not fuzzy-match numbers, string literals, operators, or arbitrary alternative programs. Code blocks include a copy control with a selection fallback when clipboard access is unavailable.
 
 Code creation tasks provide a model solution and a review checklist. Self-assessed answers do not count toward automatic accuracy statistics.
 
@@ -91,7 +93,7 @@ Each question has an entry in the [question audit](data/question-audit.json). Th
 
 The browser validates every loaded question bank and checks its reviewed SHA-256 content fingerprints when Web Crypto is available. A changed fingerprint prevents that bank from starting a quiz; unavailable browser verification is disclosed. These hashes detect changes against the included review record, rather than authenticating an external publisher.
 
-The current audit covers all 6,600 records. Reference execution or browser-rendering evidence additionally covers 2,880 records, using 660 unique snippets. Other records use calculation and source/code review without full native execution. These methods are distinguished in the audit rather than treating an unavailable runtime as a successful execution.
+The current audit covers all 6,800 records. Reference execution or browser-rendering evidence additionally covers 3,040 records, using 704 unique snippets. Other records use calculation and source/code review without full native execution. These methods are distinguished in the audit rather than treating an unavailable runtime as a successful execution.
 
 The review is AI-assisted source and reasoning review, not certification by an independent human reviewer. It checks the reference questions and solutions, not arbitrary learner-written programs.
 

@@ -5,9 +5,10 @@ import path from 'node:path';
 import {spawnSync,execFile} from 'node:child_process';
 import {topics,levels,types} from './topics.mjs';
 import {makeExercise} from './exercises.mjs';
+import {checkTypeScriptCases} from './typescript-runtime.mjs';
 
 const ids=new Set(), signatures=new Set();
-const cases=[],results=[],shellCases=[];
+const cases=[],results=[],shellCases=[],typescriptCases=[];
 let total=0;
 for(const topic of topics) {
   assert.equal(topic.concepts.length,10,topic.id);
@@ -41,7 +42,8 @@ for(const topic of topics) {
       vm.runInNewContext(ex.code,{console:{log:v=>output.push(v)}},{timeout:200});
       assert.deepEqual(output,[ex.result],testcase.id);
       results.push({id:testcase.id,status:'passed',detail:'Executed with Node.js vm, isolated context and timeout.'});
-    } else if(ex.executable.startsWith('shell-'))shellCases.push(testcase);
+    } else if(ex.executable==='typescript')typescriptCases.push(testcase);
+    else if(ex.executable.startsWith('shell-'))shellCases.push(testcase);
     else cases.push(testcase);
   }
   total+=qs.length;
@@ -49,6 +51,7 @@ for(const topic of topics) {
 const python=spawnSync('python',['scripts/check-python.py'],{input:JSON.stringify(cases),encoding:'utf8',maxBuffer:10*1024*1024,timeout:120000});
 if(python.status!==0) throw Error(python.stderr||python.error||'Python verification failed');
 results.push(...JSON.parse(python.stdout));
+results.push(...checkTypeScriptCases(typescriptCases));
 const shell=process.platform==='win32'?'C:/Program Files/Git/bin/bash.exe':'/bin/bash';
 const scratch=path.resolve('.qa','references-'+Date.now());
 async function runShellCase(c){
@@ -65,7 +68,7 @@ async function runShellCase(c){
 for(let start=0;start<shellCases.length;start+=4)results.push(...await Promise.all(shellCases.slice(start,start+4).map(runShellCase)));
 const failures=results.filter(x=>x.status==='failed');
 for(const failure of failures) console.error(failure);
-const report={generatedAt:new Date().toISOString(),questions:total,topics:topics.length,structuralChecks:'passed',executedCases:results.filter(x=>x.status==='passed').length,unavailableCases:results.filter(x=>x.status==='unavailable').length,failedCases:failures.length,notes:['Parameterized practice bank: 132 topic/band families with ten input variants and five question formats.','Difficulty labels indicate progression within a family, not independently calibrated expert difficulty.','Runtime checks cover supported local interpreters only, including the extra input used in B comparisons.','Theory and vendor GUI/model exercises have reference links but are not independently certified.','Code creation requires self-review; this website never executes submitted code.'],results};
+const report={generatedAt:new Date().toISOString(),questions:total,topics:topics.length,structuralChecks:'passed',executedCases:results.filter(x=>x.status==='passed').length,unavailableCases:results.filter(x=>x.status==='unavailable').length,failedCases:failures.length,notes:[`Parameterized practice bank: ${topics.length*levels.length} topic/band families with ten input variants and five question formats.`,'Difficulty labels indicate progression within a family, not independently calibrated expert difficulty.','Runtime checks cover supported local interpreters only, including the extra input used in B comparisons.','Theory and vendor GUI/model exercises have reference links but are not independently certified.','Code creation requires self-review; this website never executes submitted code.'],results};
 fs.writeFileSync('data/verification.json',JSON.stringify(report,null,2));
 assert.equal(failures.length,0,'Runtime verification failed');
 console.log(`PASS: ${total} unique question records; 50 per band/topic; 4 distinct MCQ choices with one answer; explanations and solutions present.`);

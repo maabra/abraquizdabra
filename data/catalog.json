@@ -28,6 +28,20 @@
     }
   },
   {
+    "id": "typescript",
+    "name": "TypeScript",
+    "category": "Languages",
+    "icon": "TS",
+    "source": "https://www.typescriptlang.org/docs/handbook/",
+    "count": 200,
+    "levels": {
+      "Easy": 50,
+      "Medium": 50,
+      "Hard": 50,
+      "Very hard": 50
+    }
+  },
+  {
     "id": "java",
     "name": "Java",
     "category": "Languages",

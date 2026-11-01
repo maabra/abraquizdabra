@@ -5,6 +5,7 @@ import crypto from 'node:crypto';
 import {createRequire} from 'node:module';
 import {spawnSync,execFile} from 'node:child_process';
 import {openAuditBrowser} from './browser-runtime.mjs';
+import {checkTypeScriptCases} from './typescript-runtime.mjs';
 
 const catalog=JSON.parse(fs.readFileSync('data/catalog.json'));
 const questions=catalog.flatMap(t=>JSON.parse(fs.readFileSync(`data/${t.id}.json`)));
@@ -23,14 +24,15 @@ for(const q of questions.filter(q=>q.type!=='theory')){
     cases.set(key,{id:key,topic:q.topic,band:['Easy','Medium','Hard','Very hard'].indexOf(q.level),code:text,expected});
   }
 }
-const results=[],python=[],shell=[],browserCases=[],csharp=[],vb=[],php=[];
+const results=[],python=[],shell=[],browserCases=[],csharp=[],vb=[],php=[],typescript=[];
 const cached=process.argv.includes('--retry-incomplete')&&fs.existsSync('data/native-execution.json')?new Map(JSON.parse(fs.readFileSync('data/native-execution.json')).results.map(r=>[r.id,r])):new Map();
 for(const c of cases.values()){
   if(cached.get(c.id)?.status==='passed'&&cached.get(c.id).expected===c.expected){results.push(cached.get(c.id));continue;}
   if(['javascript','node'].includes(c.topic)){
     const output=[];vm.runInNewContext(c.code,{console:{log:x=>output.push(x)}},{timeout:300});
     results.push({...c,code:undefined,status:output.length===1&&output[0]===c.expected?'passed':'failed',method:'Unmodified stored JavaScript executed in Node.js',actual:output[0]});
-  }else if(['python','numpy','opencv','fastapi','sqlalchemy','sql','mysql'].includes(c.topic))python.push({...c,runtime:['sql','mysql'].includes(c.topic)?'sql':'python'});
+  }else if(c.topic==='typescript')typescript.push(c);
+  else if(['python','numpy','opencv','fastapi','sqlalchemy','sql','mysql'].includes(c.topic))python.push({...c,runtime:['sql','mysql'].includes(c.topic)?'sql':'python'});
   else if(['git','openssl'].includes(c.topic))shell.push(c);
   else if(['react','vue','html','css'].includes(c.topic))browserCases.push(c);
   else if(['csharp','dotnet'].includes(c.topic))csharp.push(c);
@@ -42,6 +44,7 @@ const pythonRun=spawnSync('python',['scripts/check-python.py'],{input:JSON.strin
 if(pythonRun.status!==0)throw Error(pythonRun.stderr);
 for(const r of JSON.parse(pythonRun.stdout)){const c=cases.get(r.id);results.push({...c,code:undefined,...r,method:c.topic==='mysql'?'Stored SQL executed with SQLite; MySQL server not executed':'Unmodified stored code executed with Python/SQLite'});}
 console.log(`Native audit: JavaScript and Python/SQL checked; processing ${shell.length} CLI snippets.`);
+results.push(...checkTypeScriptCases(typescript));
 const bash=process.platform==='win32'?'C:/Program Files/Git/bin/bash.exe':'/bin/bash';
 const phpBinary=process.env.QUIZ_PHP||(fs.existsSync('.qa/php-runtime/php.exe')?path.resolve('.qa/php-runtime/php.exe'):'php');
 for(const c of php){
@@ -108,7 +111,7 @@ if(report.failed){console.error(results.filter(r=>r.status==='failed').slice(0,1
 // CI must not go green when an installed dependency or browser silently stops
 // working. Other languages and proprietary hosts remain explicitly optional.
 if(process.env.QUIZ_REQUIRE_RUNTIMES==='1'){
-  const required=new Set(['javascript','node','python','numpy','opencv','fastapi','sqlalchemy','sql','mysql','git','openssl','react','vue','html','css']);
+  const required=new Set(['javascript','typescript','node','python','numpy','opencv','fastapi','sqlalchemy','sql','mysql','git','openssl','react','vue','html','css']);
   const missing=results.filter(r=>required.has(r.topic)&&r.status!=='passed');
   if(missing.length){console.error('Required runtime checks did not pass:',missing);process.exitCode=1;}
 }

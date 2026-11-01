@@ -20,7 +20,7 @@ def infer_input(topic, band, code):
         return int(re.search(r'ARG BASE=(\d+)', code)[1])
     if topic == 'docker' and band == 2:
         return int(re.search(r'RUN echo \$\(\(\s*(\d+) \* 3', code)[1])
-    match = re.search(r'\b[nN](?: As Integer)?\s*(?::=|=)\s*(\d+)', code)
+    match = re.search(r'\b[nN](?: As Integer|: number)?\s*(?::=|=)\s*(\d+)', code)
     if match:
         return int(match[1])
     if topic in ('sql', 'mysql'):
@@ -91,7 +91,7 @@ def git_reachable(n, band):
 
 
 def expected(topic, band, n):
-    ordinary = {'python','javascript','node','java','c','cpp','csharp','dotnet','php','haskell','sql','mysql','arduino'}
+    ordinary = {'python','javascript','typescript','node','java','c','cpp','csharp','dotnet','php','haskell','sql','mysql','arduino'}
     if topic in ordinary:
         return [3*n+2, sum(i+i for i in range(1,n+1)), same_parity_sum(n), fib_by_paths(n)][band]
     if topic == 'react':

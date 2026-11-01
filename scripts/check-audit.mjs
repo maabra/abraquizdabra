@@ -12,6 +12,6 @@ for(const topic of catalog)for(const q of JSON.parse(fs.readFileSync(`data/${top
   assert.equal(report.questions[q.id].contentHash,hash,q.id+' ledger is stale');
   count++;
 }
-assert.equal(count,6600);assert.equal(Object.keys(report.questions).length,count);
+assert.equal(count,catalog.reduce((total,topic)=>total+topic.count,0));assert.equal(Object.keys(report.questions).length,count);
 assert.equal(report.summary.failed,0);
 console.log(`PASS: ${count} per-question audit records match the current question content.`);
